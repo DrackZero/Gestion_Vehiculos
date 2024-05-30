@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviar Correos</title>
+  <link rel="stylesheet" href="../styles/correos.css">
+</head>
+
+<script type="module" src="../controllers/Validations/logout.js"></script>
+<script type="module" src="../controllers/adds/CorreosDireccion.js"></script>
+<script type="module" src="../controllers/adds/notifications.js"></script>
+
+
+
+<body>
+
+
+  <div class="sidebar">
+    <ul>
+        <li><a href="#">Opción 1</a></li>
+        <li><a href="#" class="btn" id="Enviarcorreos">Correos</a></li>
+        <li><a href="#" class="btn" id="cerrar">Cerrar sesión</a></li>
+    </ul>
+</div>
+
+  <header>
+    <h1>Enviar Correos</h1>
+    <nav>
+      <ul>
+          <li><a href="/templates/principal.html">Inicio</a></li>
+          <li><a href="/templates/informacion_central.html">Registrar Vehiculo</a></li>
+          <li><a href="/templates/información_CRUD.html">Modificar Vehiculo</a></li>
+          <li><a href="#">Contacto</a></li>
+      </ul>
+      <div class="header-icons">
+          <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+          <div class="notification-icon">
+              <span class="notification-count" onclick="updateNotifications()" id="notificationCount"></span>
+              <img src="/resources/img/campanita.png" alt="Notificaciones" id="notificationBell">
+
+          </div>
+      </div>
+  </nav>
+  </header>
+  <div id="notificationContainer" class="notification-container"></div>
+
+  <main class="container">
+    <form id="emailForm" class="email-form">
+      <label for="to">Para:</label>
+      <select id="to" name="to">
+
+      </select>
+      <label for="subject">Asunto:</label>
+      <input type="text" id="subject" name="subject" required>
+      <label for="message">Mensaje:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      <button type="submit">Enviar Correo</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Empresa de Vehículos de Carga Pesada. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+
+    
+    function toggleSidebar() {
+      var sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('active');
+    }
+    document.addEventListener('DOMContentLoaded', async () => {
+      const module = await import('../controllers/adds/notifications.js');
+      module.updateNotifications();
+    });
+
+    
+  
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+</body>
+</html>

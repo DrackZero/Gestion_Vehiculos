@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración - Usuarios</title>
+  <link rel="stylesheet" href="../styles/Interfaz_empresa.css">
+</head>
+<body>
+  <header>
+    <h1>Panel de Administración - Usuarios</h1>
+  </header>
+
+  <main>
+    <section id="search-filter">
+      <input type="text" placeholder="Buscar usuarios...">
+      <select name="filter">
+        <option value="todos">Todos los usuarios</option>
+        <option value="activos">Usuarios activos</option>
+        <option value="inactivos">Usuarios inactivos</option>
+      </select>
+      <button id="search-button">Buscar</button>
+    </section>
+
+    <section id="user-list">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo Electrónico</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aquí se mostrarán dinámicamente los usuarios -->
+          <tr>
+            <td>Nombre Usuario</td>
+            <td>usuario@example.com</td>
+            <td>Administrador</td>
+            <td>
+              <button class="edit-button">Editar</button>
+              <button class="delete-button">Eliminar</button>
+            </td>
+          </tr>
+          <!-- Más filas de usuarios aquí -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Todos los derechos reservados</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

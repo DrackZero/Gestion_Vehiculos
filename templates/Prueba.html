@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Envío de Correo</title>
+</head>
+<body>
+
+<h1>Prueba de Envío de Correo</h1>
+
+<button onclick="sendTestEmail()">Enviar Correo de Prueba</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    // Inicializar emailjs
+    emailjs.init('cbR3L-HxfB6AOoXrg');
+
+    // Función para enviar el correo de prueba
+    function sendTestEmail() {
+        const email = prompt('Ingrese su dirección de correo electrónico:');
+        const vehicleDetails = 'Este es un correo de prueba para verificar si la función de envío de correo funciona correctamente.';
+
+        // Enviar correo de prueba
+        emailjs.send('service_mjlo8t4', 'template_1tbre4m', {
+            to_email: email,
+            vehicle_details: vehicleDetails
+        })
+        .then(response => {
+            console.log('Correo enviado exitosamente!', response.status, response.text);
+        })
+        .catch(error => {
+            console.log('Error al enviar el correo:', error);
+        });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('../resources/img/fondo_de_inicio.png'); 
+    background-size: cover;
+    height: 500px; 
+   
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+
+
+.login-form, .registro-form {
+    background-color: #38895e;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-form h2, .registro-form h2 {
+    margin-top: 0;
+}
+
+.login-form label,
+.login-form input,
+.login-form button,
+.registro-form label, 
+.registro-form input, 
+.registro-form button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-form input, .registro-form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form button, .registro-form button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.consulta-form {
+    margin-bottom: 20px;
+  }
+  
+  .consulta-form h2 {
+    margin-bottom: 10px;
+  }
+  
+  .consulta-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .consulta-form input[type="text"] {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .consulta-form button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .vehicle-info {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+
+}
+  
+  .vehiculo-info h2 {
+    margin-bottom: 10px;
+  }
+  
+  .vehiculo-info p {
+    margin-bottom: 20px;
+  }
+
+  
+  .vehiculo-info a {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .vehiculo-info a:hover {
+    text-decoration: underline;
+  }
+
+
+  .vehicle-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 10px; 
+    overflow: hidden;
+}
+
+.vehicle-table th, .vehicle-table td {
+    padding: 8px;
+    text-align: left;
+}
+
+.vehicle-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.vehicle-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.vehicle-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+
+.additional-info {
+    margin-top: 10px;
+    margin-bottom: 120px;
+
+
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    margin-top: 40px;
+
+}
+
+footer nav ul li {
+    margin-right: 10px;
+}
+
+footer nav ul li:last-child {
+    margin-right: 0;
+}

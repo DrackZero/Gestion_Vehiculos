@@ -1,0 +1,109 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Subir Información</title>
+      <link rel="stylesheet" href="../styles/diseño_central.css">
+      
+  </head>
+  <script type="module" src="../controllers/Register/AgregarV.js"></script>
+  <script type="module" src="../controllers/Validations/logout.js"></script>
+  <script type="module" src="../controllers/Conection/functions.js"></script>
+  <script type="module" src="../controllers/adds/notifications.js"></script>
+
+
+  <body>
+ 
+    <div class="sidebar">
+      <ul>
+        <li><a href="#">Registrar Vehiculo</a></li>
+        <li><a href="#">Opción 2</a></li>
+        <li><a href="#" class="btn" id="cerrar">Cerrar sesión</a></li>
+      </ul>
+    </div>
+
+      <header>
+          <div class="container">
+            <h1>Empresa de Vehículos de Carga Pesada</h1>
+            <nav>
+              <ul>
+                <li><a href="/templates/principal.html">Inicio</a></li>
+                <li><a href="/templates/informacion_central.html">Registrar Vehiculo</a></li>
+                <li><a href="/templates/información_CRUD.html">Modificar Vehiculo</a></li>
+                <li><a href="#">Contacto</a></li>
+              </ul>
+
+              <div class="header-icons">
+                <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+                <div class="notification-icon">
+                    <span class="notification-count" id="notificationCount"></span>
+                    <img src="../resources/img/campanita.png" alt="Notificaciones" id="notificationBell">
+                </div>
+            </div>
+
+            </nav>
+          </div>
+        </header>
+        <div id="notificationContainer" class="notification-container"></div>
+
+
+      <div class="FormularioVehiculo">
+      <form id="vehicleForm">
+          <h2>Información de Vehículo</h2>
+          <label for="marca">Marca:</label>
+          <input type="text" id="marca" name="marca" required>
+          
+          <label for="modelo">Modelo:</label>
+          <input type="text" id="modelo" name="modelo" required>
+
+          <label for="email">Email del conductor:</label>
+          <input type="text" id="email" name="email" required>
+          
+          <label for="año">Año:</label>
+          <input type="number" id="año" name="año" required>
+          
+          <label for="placa">Placa:</label>
+          <input type="text" id="placa" name="placa" required>
+          
+          <label for="capacidad">Capacidad de Carga:</label>
+          <input type="number" id="capacidad" name="capacidad" required>
+          
+          <label for="estado">Estado:</label>
+          <select id="estado" name="estado" required>
+              <option value="Disponible">Disponible</option>
+              <option value="En Mantenimiento">En Mantenimiento</option>
+              <option value="Fuera de Servicio">Fuera de Servicio</option>
+          </select>
+
+          <label for="Soat">Soat:</label>
+          <input type="file" id="Soat" class="custom-file-input" name="Soat" accept=".pdf, .doc, .docx">
+
+          <label for="capacidad">Cuando se vence el soat:</label>
+          <input type="date" id="fechaS" name="fechaS" required>
+          
+          <button id="btnsave" type="submit">Subir Información de Vehículo</button>
+      </form>
+      </div>
+
+      <footer>
+          <div class="container">
+            <p>&copy; 2024 Empresa de Vehículos de Carga Pesada. Todos los derechos reservados.</p>
+          </div>
+      </footer>
+
+      <script>
+
+        
+          function toggleSidebar() {
+              var sidebar = document.querySelector('.sidebar');
+              sidebar.classList.toggle('active');
+          }
+
+          document.addEventListener('DOMContentLoaded', async () => {
+      const module = await import('../controllers/adds/notifications.js');
+      module.updateNotifications();
+    });
+      </script>
+  </body>
+  </html>

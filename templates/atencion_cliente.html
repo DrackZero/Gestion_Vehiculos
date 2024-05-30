@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación de Servicios</title>
+    <link rel="stylesheet" href="../styles/atencion_cliente.css"> <!-- Incluye aquí tu archivo de estilos CSS -->
+</head>
+<body>
+    <h1>Programación de Servicios con los Clientes</h1>
+    <form id="serviceForm">
+        <div>
+            <label for="clientName">Nombre del Cliente:</label>
+            <input type="text" id="clientName" name="clientName" required>
+        </div>
+        <div>
+            <label for="serviceType">Tipo de Servicio:</label>
+            <select id="serviceType" name="serviceType" required>
+                <option value="">Seleccionar Tipo</option>
+                <option value="Mantenimiento">Mantenimiento</option>
+                <option value="Reparación">Reparación</option>
+                <option value="Entrega">Entrega</option>
+            </select>
+        </div>
+        <div>
+            <label for="serviceDate">Fecha del Servicio:</label>
+            <input type="date" id="serviceDate" name="serviceDate" required>
+        </div>
+        <div>
+            <label for="serviceDescription">Descripción del Servicio:</label>
+            <textarea id="serviceDescription" name="serviceDescription" rows="4" required></textarea>
+        </div>
+        <button type="submit">Programar Servicio</button>
+    </form>
+
+    <!-- Firebase SDK (debes agregarlo) 
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script src="firebase-config.js"></script>  Configuración de Firebase 
+
+     JavaScript para manejar la lógica de programación de servicios 
+    <script src="service-programming.js"></script>
+   -->
+</body>
+</html>

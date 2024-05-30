@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Vehículos</title>
+    <link rel="stylesheet" type="text/css" href="../styles/diseño_crud.css">
+</head>
+
+
+<script type="module" src="../controllers/Validations/logout.js"></script>
+
+
+
+
+<body>
+
+    <div class="sidebar">
+        <ul>
+          <li><a href="#">Registrar Vehiculo</a></li>
+          <li><a href="#">Opción 2</a></li>
+          <li><a href="#" class="btn" id="cerrar">Cerrar sesión</a></li>
+        </ul>
+      </div>
+
+    <header>
+        <div class="container">
+
+        <h1>CRUD de Vehículos</h1>
+        <nav>
+            <ul>
+              <li><a href="/templates/principal.html">Inicio</a></li>
+              <li><a href="/templates/informacion_central.html">Registrar Vehiculo</a></li>
+              <li><a href="/templates/información_CRUD.html">Modificar Vehiculo</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+
+            <div class="header-icons">
+                <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+                <div class="notification-icon">
+                    <span class="notification-count" id="notificationCount"></span>
+                    <img src="../resources/img/campanita.png" alt="Notificaciones" id="notificationBell">
+                </div>
+          </nav>
+        </div>
+    </header>
+    <div id="notificationContainer" class="notification-container"></div>
+
+  
+        <main>
+  
+            <div class="lista-vehiculos" id="listaVehiculos">
+                <h2>Lista de Vehículos</h2>
+                <input type="text" id="buscarInput" placeholder="Buscar por placa...">
+                <table id="tablaVehiculos">
+                    <thead>
+                        <tr>
+                            <th>Placa</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Año</th>
+                            <th>Capacidad</th>
+                            <th>Estado</th>
+                            <th>SOAT</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaBody">
+
+
+                    </tbody>
+                </table>
+
+
+
+                <form id="formularioEdicion" style="display: none;">
+                    <label for="marca">Marca:</label>
+                    <input type="text" id="marca" name="marca">
+                    <label for="modelo">Modelo:</label>
+                    <input type="text" id="modelo" name="modelo">
+                    <label for="anio">Año:</label>
+                    <input type="text" id="anio" name="anio">
+                    <label for="capacidad">Capacidad:</label>
+                    <input type="text" id="capacidad" name="capacidad">
+                    <label for="estado">Estado:</label>
+                    <select id="estado" name="estado" required>
+                        <option value="Disponible">Disponible</option>
+                        <option value="En Mantenimiento">En Mantenimiento</option>
+                        <option value="Fuera de Servicio">Fuera de Servicio</option>
+                    </select>
+
+                    <label for="Soat">URL del SOAT:</label>
+                    <input type="file" id="Soat" class="custom-file-input" name="Soat">
+
+                    <button type="submit">Guardar Cambios</button>
+                </form>
+                
+            </div>
+        </main>
+
+    <footer>
+        <p>&copy; 2024 Empresa de Vehículos de Carga Pesada. Todos los derechos reservados.</p>
+    </footer>
+
+    <script type="module" src="../controllers/Conection/firebase.js"></script>
+    <script type="module" src="../controllers/Modify/RUD.js"></script>
+
+    <script>
+
+        
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+    const module = await import('../controllers/adds/notifications.js');
+    module.updateNotifications();
+  });
+    </script>
+
+</body>
+</html>

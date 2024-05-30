@@ -1,0 +1,215 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden; /* Oculta las barras de desplazamiento en todas las direcciones */
+}
+.sidebar {
+    position: fixed; 
+    top: 0; 
+    left: -200px; 
+    width: 200px; 
+    height: 100%; 
+    background-color: #333; 
+    color: #fff; 
+    transition: left 0.3s; 
+    z-index: 999;
+  }
+  
+  .sidebar.active {
+    left: 0; 
+  }
+  
+  .sidebar ul {
+    list-style: none; 
+    padding: 0;  
+    margin: 0; 
+  }
+  
+  .sidebar ul li {
+    padding: 10px 20px; 
+    border-bottom: 1px solid #555; 
+  }
+  
+  .sidebar ul li a {
+    color: #fff; 
+    text-decoration: none; 
+  }
+  
+  /* Estilos para el contenido principal */
+  .content {
+    margin-left: 0; 
+  }
+  
+  
+  
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  
+  }
+  
+  .header-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinea los elementos al final del contenedor del header */
+    gap: 20px; /* Espacio entre los íconos */
+    margin-right: 10px; /* Ajusta el margen izquierdo para mover la campana hacia la derecha */
+  
+  }
+  
+  .toggle-btn {
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .notification-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .notification-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .notification-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 12px;
+  }
+  
+  .notification-container {
+    position: fixed;
+    top: 100px; /* Ajusta según la altura de la campanita y el espacio deseado */
+    right: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    display: none; /* Ocultar el contenedor de notificaciones por defecto */
+    z-index: 999;
+  
+  }
+  .notification {
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+
+header {
+    background-color: #3a7e5a;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  
+}
+
+.btn {
+  display: inline-block;
+  background: #3a7e5a;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  min-width: 120px; /* Establece un ancho mínimo para ambos botones */
+  text-align: center; /* Centra el texto dentro del botón */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.btn:hover {
+  background: #98ee94;
+}
+
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.email-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.email-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+
+.email-form input[type="text"],
+.email-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.email-form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.email-form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+footer {
+    background-color: #3a7e5a;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" type="text/css" href="styles/inicio.css">
+    
+    
+
+</head>
+<body>
+    <script type="module" src="./controllers/Conection/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"></script>
+    <script type="module" src="./controllers/Validations/login.js"></script>
+    <script type="module" src="./controllers/Register/registrarU.js"></script>
+    <script type="module" src="./controllers/Validations/ocultarL.js"></script>
+    <script type="module" src="./controllers/Validations/consultarVehiculo.js"></script>
+
+
+<!-- Cabecera -->
+<header>
+    <h1>Nombre de la Empresa</h1>
+
+</header>
+
+<!-- Contenido Principal -->
+<main>
+   
+
+    <!-- Formulario de Inicio de Sesión -->
+    <div class="login-form" id="loginForm">
+        <h2>Iniciar Sesión</h2>
+       
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" >
+          
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" name="contrasena" >
+            
+            <button id="btnLogin">Iniciar Sesión</button>
+            <button id="mostrarRegistro" >Registrarse</button>
+            <button id="mostrarConsulta" >Consultar Vehiculo</button>
+
+            
+
+            
+            <a href="#">¿Olvidaste tu contraseña?</a>
+            
+        </form>
+    </div>
+
+    <div class="registro-form" id="registroForm" style="display: none;">
+        <h2>Crear una nueva cuenta</h2>
+      
+        
+            <label for="correoR">Correo Electrónico:</label>
+            <input type="email" id="correoR" name="correoR" required>
+            <label for="cedulaR">Número de Cédula:</label>
+            <input type="number" id="cedulaR" name="cedulaR" required>
+            <label for="contrasenaR">Contraseña:</label>
+            <input type="password" id="contraseñaR" name="contraseñaR" required>
+            <label for="VcontrasenaR">Confirmar Contraseña:</label>
+            <input type="password" id="VcontrasenaR" name="VcontrasenaR" required>
+
+            <button id="btnRegistro" >Registrarse</button>
+            <button id="mostrarLogin" >Iniciar Sesión</button>
+
+
+        </form>
+    </div>
+
+    <div class="consulta-form" id="consultaForm" style="display: none;">
+        <h2>Consultar Vehículo</h2>
+        <label for="placaConsulta">Placa:</label>
+        <input type="text" id="placaConsulta" name="placaConsulta">
+        <button id="btnConsultar">Consultar</button>
+    </div>
+
+    <div class="vehiculo-info" id="vehiculoInfo" style="display: none;">
+        <h2>Información del Vehículo</h2>
+        <table id="infoVehiculo" class="vehicle-table">
+            <thead>
+                <tr id="vehiculoAtributos">
+                    <!-- Los encabezados se agregarán aquí -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="vehiculoValores">
+                    <!-- Los valores se agregarán aquí -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+    <!-- Información Adicional -->
+    <div class="additional-info">
+        <p>Breve descripción de los beneficios de utilizar el sistema de gestión vehicular.</p>
+        <!-- Aquí puedes agregar enlaces a las redes sociales -->
+    </div>
+</main>
+
+<!-- Pie de Página -->
+<footer>
+    <nav>
+        <ul>
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Términos y Condiciones</a></li>
+        </ul>
+    </nav>
+    <p>&copy; 2024 Empresa de Vehículos de Carga Pesada. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
