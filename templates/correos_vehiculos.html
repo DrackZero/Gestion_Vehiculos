@@ -9,8 +9,8 @@
 
 <script type="module" src="../controllers/Validations/logout.js"></script>
 <script type="module" src="../controllers/adds/CorreosDireccion.js"></script>
+<script type="module" src="../controllers/adds/togglesidebar.js"></script>
 <script type="module" src="../controllers/adds/notifications.js"></script>
-
 
 
 <body>
@@ -18,34 +18,40 @@
 
   <div class="sidebar">
     <ul>
-        <li><a href="#">Opción 1</a></li>
         <li><a href="#" class="btn" id="Enviarcorreos">Correos</a></li>
         <li><a href="#" class="btn" id="cerrar">Cerrar sesión</a></li>
     </ul>
 </div>
 
   <header>
-    <h1>Enviar Correos</h1>
+    <div class="header-container">
+      <img src="/resources/img/LogoPT.png" alt="Logo de VehiNotify" class="logo">
+      <h1>Tu recordatorio en Ruta</h1>
+      </div>    <div class="container">
     <nav>
       <ul>
           <li><a href="/templates/principal.html">Inicio</a></li>
           <li><a href="/templates/informacion_central.html">Registrar Vehiculo</a></li>
-          <li><a href="/templates/información_CRUD.html">Modificar Vehiculo</a></li>
-          <li><a href="#">Contacto</a></li>
-      </ul>
+          <li><a href="/templates/información_crud.html">Modificar Vehiculo</a></li>
+          <li><a href="/templates/documentos_crud.html">Modificar Documentos</a></li>
+        </ul>
       <div class="header-icons">
-          <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+          <div class="toggle-btn" >☰</div>
           <div class="notification-icon">
-              <span class="notification-count" onclick="updateNotifications()" id="notificationCount"></span>
+              <span class="notification-count" id="notificationCount"></span>
               <img src="/resources/img/campanita.png" alt="Notificaciones" id="notificationBell">
 
-          </div>
-      </div>
-  </nav>
+            </div>
+        </div>
+    </nav>
+  </div>
+
   </header>
   <div id="notificationContainer" class="notification-container"></div>
 
-  <main class="container">
+  <main >
+    <div class="container" i>
+
     <form id="emailForm" class="email-form">
       <label for="to">Para:</label>
       <select id="to" name="to">
@@ -57,27 +63,14 @@
       <textarea id="message" name="message" rows="4" required></textarea>
       <button type="submit">Enviar Correo</button>
     </form>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2024 Empresa de Vehículos de Carga Pesada. Todos los derechos reservados.</p>
+    <p>&copy; 2024 VehiNotify. Todos los derechos reservados.</p>
   </footer>
 
-  <script>
-
-    
-    function toggleSidebar() {
-      var sidebar = document.querySelector('.sidebar');
-      sidebar.classList.toggle('active');
-    }
-    document.addEventListener('DOMContentLoaded', async () => {
-      const module = await import('../controllers/adds/notifications.js');
-      module.updateNotifications();
-    });
-
-    
-  
-  </script>
+ 
 
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 

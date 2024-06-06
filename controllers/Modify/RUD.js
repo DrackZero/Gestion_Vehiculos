@@ -6,30 +6,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     const tablaBody = document.getElementById('tablaBody');
     const buscarInput = document.getElementById('buscarInput');
 
-    // Función para renderizar los vehículos en la tabla
-    const renderizarVehiculos = async () => {
+const renderizarVehiculos = async () => {
+    try {
         const vehiculos = await listarVehiculos();
         tablaBody.innerHTML = '';
         vehiculos.forEach((vehiculo) => {
             const fila = document.createElement('tr');
             fila.innerHTML = `
                 <td>${vehiculo.Placa}</td>
+                <td>${vehiculo.Tipo.replace('_', ' ')}</td> 
                 <td>${vehiculo.Marca}</td>
                 <td>${vehiculo.Modelo}</td>
                 <td>${vehiculo.Año}</td>
-                <td>${vehiculo.Capacidad_Carga}</td>
+                <td>${vehiculo.Capacidad_Carga}KG</td>
                 <td>${vehiculo.Estado}</td>
                 <td><a href="${vehiculo.SoatURL}" target="_blank">Ver SOAT</a></td>
                 <td>
-                    <button class="editar" data-id="${vehiculo.id}">Editar</button>
-                    <button class="borrar" data-id="${vehiculo.id}">Borrar</button>
+                    <img src="../../resources/img/editar.png" class="editar" data-id="${vehiculo.id}"></img>
+                    <img src="../../resources/img/borrar.png" class="borrar" data-id="${vehiculo.id}"></img>
                 </td>
             `;
             tablaBody.appendChild(fila);
         });
-    };
+    } catch (error) {
+        console.error("Error al renderizar los vehículos:", error);
+    }
+};
 
-    // Llamar a la función para renderizar los vehículos al cargar la página
+ 
     await renderizarVehiculos();
 
     // Función para filtrar vehículos por placa al escribir en el buscador
@@ -42,6 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const fila = document.createElement('tr');
             fila.innerHTML = `
                 <td>${vehiculo.Placa}</td>
+                <td>${vehiculo.Tipo.replace('_', ' ')}</td> 
                 <td>${vehiculo.Marca}</td>
                 <td>${vehiculo.Modelo}</td>
                 <td>${vehiculo.Año}</td>
@@ -49,25 +54,26 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td>${vehiculo.Estado}</td>
                 <td><a href="${vehiculo.SoatURL}" target="_blank">Ver SOAT</a></td>
                 <td>
-                    <button class="editar" data-id="${vehiculo.id}">Editar</button>
-                    <button class="borrar" data-id="${vehiculo.id}">Borrar</button>
+                    <img src="../../resources/img/editar.png" class="editar" data-id="${vehiculo.id}"></img>
+                    <img src="../../resources/img/borrar.png" class="borrar" data-id="${vehiculo.id}"></img>
                 </td>
             `;
             tablaBody.appendChild(fila);
         });
     });
 
-    // En el evento de clic en el botón de editar o borrar
+    // En el evento de click en el botón de editar o borrar
     tablaBody.addEventListener('click', async (e) => {
         if (e.target.classList.contains('editar')) {
-            const id = e.target.dataset.id; // Obtenemos el ID del vehículo desde el atributo data-id
+            const id = e.target.dataset.id; 
             console.log(`Editar vehículo con ID: ${id}`);
-            // Obtener los datos del vehículo a partir del ID
+
             const vehiculo = await ConsultarVehiculo(id);
-            // Mostrar el formulario de edición con los datos del vehículo
+         
             mostrarFormularioEdicion(vehiculo);
+            document.getElementById('ventanaEmergente').style.display = 'block'; 
         } else if (e.target.classList.contains('borrar')) {
-            const id = e.target.dataset.id; // Obtenemos el ID del vehículo desde el atributo data-id
+            const id = e.target.dataset.id; 
             if (confirm('¿Estás seguro de que deseas borrar este vehículo?')) {
                 await borrarVehiculo(id);
                 await renderizarVehiculos();
@@ -75,10 +81,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    // Función para mostrar el formulario de edición con los datos del vehículo
     function mostrarFormularioEdicion(vehiculo) {
-        // Mostrar el formulario de edición y completarlo con los datos del vehículo
         const formulario = document.getElementById('formularioEdicion');
+        const ventanaE = document.getElementById('ventanaEmergente');
+
         formulario.style.display = 'block';
         formulario['marca'].value = vehiculo.Marca;
         formulario['modelo'].value = vehiculo.Modelo;
@@ -100,13 +106,30 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (fileInput.files.length > 0) {
                 const file = fileInput.files[0];
                 const downloadURL = await cargarArchivo(file, vehiculo.Placa);
-                console.log('URL de descarga del archivo ha sido actualizado'); // Agregar console.log aquí
+                console.log('URL de descarga del archivo ha sido actualizado'); 
                 nuevosDatos.SoatURL = downloadURL;
             }
 
             await editarVehiculo(vehiculo.Placa, nuevosDatos);
             formulario.style.display = 'none';
+            ventanaE.style.display = 'none';
             await renderizarVehiculos();
         });
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const abrirVentanaBtns = document.querySelectorAll('.editar');
+    const ventanaEmergente = document.getElementById('ventanaEmergente');
+
+    abrirVentanaBtns.forEach(abrirVentanaBtn => {
+        abrirVentanaBtn.addEventListener('click', () => {
+            ventanaEmergente.style.display = 'block';
+        }); 
+    });
+
+    const cerrarVentanaBtn = document.getElementById('cerrarV');
+    cerrarVentanaBtn.addEventListener('click', () => {
+        ventanaEmergente.style.display = 'none';
+    });
 });

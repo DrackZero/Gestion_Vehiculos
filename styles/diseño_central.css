@@ -1,260 +1,363 @@
+@font-face {
+  font-family: 'StrokeWeight120';
+  src: url('/resources/fonts/strokeweight-120.otf') format('opentype');
+}
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  font-family: 'StrokeWeight120', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+}
+
+
+body::-webkit-scrollbar {
+  width: 8px; 
+  border-radius: 5px; 
+  
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f100; 
+  border-radius: 5px; 
 
 }
 
-.sidebar {
-    position: fixed; 
-    top: 0; 
-    left: -200px; 
-    width: 200px; 
-    height: 100%; 
-    background-color: #333; 
-    color: #fff; 
-    transition: left 0.3s; 
-    z-index: 999;
-  }
-  
-  .sidebar.active {
-    left: 0; 
-  }
-  
-  .sidebar ul {
-    list-style: none; 
-    padding: 0;  
-    margin: 0; 
-  }
-  
-  .sidebar ul li {
-    padding: 10px 20px; 
-    border-bottom: 1px solid #555; 
-  }
-  
-  .sidebar ul li a {
-    color: #fff; 
-    text-decoration: none; 
-  }
-  .toggle-btn {
-    cursor: pointer;
-    color: #fff;
-  }
+body::-webkit-scrollbar-thumb {
+  background: #bcbcbc; 
+  border-radius: 5px; 
 
-  .header-icons {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Alinea los elementos al final del contenedor del header */
-    gap: 20px; /* Espacio entre los íconos */
-    margin-right: 10px; /* Ajusta el margen izquierdo para mover la campana hacia la derecha */
-  
-  }
-  
-  .notification-icon {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-  
-  .notification-icon img {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .notification-count {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 3px 7px;
-    font-size: 12px;
-  }
-  
-  .notification-container {
-    position: fixed;
-    top: 120px; /* Ajusta según la altura de la campanita y el espacio deseado */
-    right: 20px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    display: none; /* Ocultar el contenedor de notificaciones por defecto */
-    z-index: 999;
-  
-  }
-  .notification {
-    margin-bottom: 5px;
-    padding: 5px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-
-  
-.FormularioVehiculo {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-grow: 1;
-    margin-bottom: 100px;
 }
 
-.container {
-    text-align: center;
-  
-  }
+body::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+  border-radius: 5px; 
+
+}
+
+
+.header-container {
+  display: flex;
+  align-items: center;
+}
 
 .header-icons {
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Alinea los elementos al final del contenedor del header */
-  gap: 20px; /* Espacio entre los íconos */
+  justify-content: flex-end; 
+  gap: 20px; 
+  margin-right: 10px; 
+
 }
 
+header {
+  background: #69a88d;
+  color: #fff;
+  padding: 1rem 0;
+  
+}
+
+
 header h1 {
-    margin: 0;
-    text-align: center;
-    padding: 20px 0;
-    background-color: #3a7e5a;
-    color: #fff;
+  margin: 0;
+  text-align: center;
+  padding: 20px 0;
+  color: #fff;
 }
 
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin-right: 1rem;
-  }
-  
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+nav ul li {
+  display: inline;
+  margin-right: 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.logo {
+  max-height: 100px;
+  margin-right: 40px;
+  box-shadow: 3px 3px 13px 5px rgba(0, 0, 0, 0.3); 
+}
+
+
+#loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7); 
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+}
+
+#loader {
+  border: 16px solid #f3f3f3; 
+  border-top: 16px solid #69a88d; 
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite; 
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -200px;
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  transition: left 0.3s;
+  z-index: 999;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 20px;
+  border-bottom: 1px solid #555;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.toggle-btn {
+  cursor: pointer;
+  color: #fff;
+}
+
+
+
+.notification-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.notification-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.notification-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 12px;
+}
+
+.notification-container {
+  position: fixed;
+  top: 120px; 
+  right: 40px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  max-height: 400px;
+  display: none; 
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.notification-container::-webkit-scrollbar {
+  width: 8px; 
+  border-radius: 5px; 
+}
+
+.notification-container::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 5px; 
+
+}
+
+.notification-container::-webkit-scrollbar-thumb {
+  background: #bcbcbc; 
+  border-radius: 5px; 
+
+}
+
+.notification-container::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+  border-radius: 5px; 
+
+}
+
+.notification {
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.FormularioVehiculo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin-bottom: 100px;
+  
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 label {
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
 }
 
 input[type="text"],
 input[type="number"],
+input[type="date"],
+input[type="file"],
 select {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-input[type="date"] {
+  font-family: 'StrokeWeight120', sans-serif;
   padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
-  width: 100%; 
-  box-sizing: border-box; 
+  width: 100%;
+  box-sizing: border-box;
 }
 
-
 input[type="date"]:focus {
-  outline: none; 
+  outline: none;
   border-color: #4CAF50;
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.25); 
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.25);
 }
 
 button[type="submit"] {
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+  font-family: 'StrokeWeight120', sans-serif;
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
-.container {
-    background-color: #3a7e5a;
-
-   
-  
-  }
-
-
-
-/* Estilo personalizado para el campo de carga de archivos */
 .custom-file-input {
-    content: 'Seleccionar archivo';
-    display: inline-block;
-    background: #61e061;
-    color: white;
-    padding: 8px 12px;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    align-items: center;
-
-    margin-bottom: 20px;
+  display: inline-block;
+  background: #61e061;
+  color: white;
+  padding: 8px 12px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
+  visibility: hidden;
 }
 
-
-
 .custom-file-input:hover {
-    background: #45a049;
+  background: #45a049;
 }
 
 .custom-file-input:active {
-    background: #3a7e3a;
+  background: #3a7e3a;
 }
 
 .custom-file-input:focus::before {
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
+.btn {
+  display: inline-block;
+  background: #3a7e5a;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+  cursor: pointer;
+}
 
-
+.btn:hover {
+  background: #98ee94;
+}
 
 footer {
-    background-color: #3a7e5a;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    margin-top: 40px;
+  background-color: #69a88d;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  margin-top: 40px;
 }

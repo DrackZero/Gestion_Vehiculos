@@ -24,17 +24,28 @@ export async function updateNotifications() {
             const vehicle = doc.data();
             console.log('Vehicle data:', vehicle);
 
-            const expiryDate = vehicle.FechaSoat.toDate(); // Convertir Timestamp a Date
-            console.log('Expiry date:', expiryDate);
+            const documents = [
+                { name: 'SOAT', expiryDate: vehicle.FechaSoat },
+                { name: 'Peritaje', expiryDate: vehicle.FechaPeritaje },
+                { name: 'Tarjeta de Operación', expiryDate: vehicle.FechaTarjetaOperacion },
+                { name: 'Extracto de Contrato', expiryDate: vehicle.FechaExtractoContrato },
+                { name: 'Quinta Rueda', expiryDate: vehicle.FechaQuintaRueda },
+                { name: 'King Pin', expiryDate: vehicle.FechaKingPin }
+            ];
 
-            const timeDiff = expiryDate - now;
-            const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            console.log('Days until expiry:', dayDiff);
+            documents.forEach(doc => {
+                if (doc.expiryDate) {
+                    const expiryDate = doc.expiryDate.toDate();
+                    const timeDiff = expiryDate - now;
+                    const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    console.log(`${doc.name} - Days until expiry:`, dayDiff);
 
-            if (dayDiff <= warningDays) {
-                count++;
-                notifications.push(`El SOAT del vehículo con placa ${vehicle.Placa} está próximo a vencer el ${expiryDate.toLocaleDateString()}.`);
-            }
+                    if (dayDiff <= warningDays) {
+                        count++;
+                        notifications.push(`El ${doc.name} del vehículo con placa ${vehicle.Placa} está próximo a vencer el ${expiryDate.toLocaleDateString()}.`);
+                    }
+                }
+            });
         });
 
         notificationCount.textContent = count > 0 ? count : '';
@@ -57,7 +68,7 @@ export async function updateNotifications() {
     }
 }
 
-async function toggleNotificationContainer() {
+export async function toggleNotificationContainer() {
     const notificationContainer = document.getElementById('notificationContainer');
     const displayStyle = getComputedStyle(notificationContainer).display;
     
@@ -69,9 +80,30 @@ async function toggleNotificationContainer() {
     }
 }
 
-const notificationBell = document.getElementById('notificationBell');
-notificationBell.addEventListener('click', toggleNotificationContainer);
+
+document.addEventListener('DOMContentLoaded', updateNotifications);
+
+document.getElementById('notificationBell').addEventListener('click', toggleNotificationContainer);
 
 document.addEventListener('DOMContentLoaded', () => {
-    updateNotifications();
+    const notificationContainer = document.getElementById('notificationContainer');
+
+    const hideNotifications = () => {
+        notificationContainer.style.display = 'none';
+    };
+
+    const notificationBell = document.getElementById('notificationBell');
+    notificationBell.addEventListener('click', toggleNotificationContainer);
+
+    document.addEventListener('click', (event) => {
+        if (!notificationContainer.contains(event.target) && event.target !== notificationBell) {
+            hideNotifications();
+        }
+    });
+
+    notificationContainer.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
+    window.addEventListener('scroll', hideNotifications);
 });

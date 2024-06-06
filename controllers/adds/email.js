@@ -6,6 +6,7 @@ export async function enviarCorreo(to, subject, message) {
         to_email: to,
         subject: subject,
         message: message 
+        
          });
 
     console.log('Correo electrónico enviado:', response);

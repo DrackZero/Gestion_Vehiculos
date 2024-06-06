@@ -1,6 +1,9 @@
-/* Estilos Generales */
+@font-face {
+    font-family: 'StrokeWeight120';
+    src: url('/resources/fonts/strokeweight-120.otf') format('opentype');
+  }
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'StrokeWeight120', sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -12,14 +15,29 @@ body {
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
+    background-color: #4C8672;
+    color: #FFFFFF;
     text-align: center;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .logo {
+    max-height: 100px;
+    margin-right: 40px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra para el logo */
 }
 
 header h1 {
     margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    margin: 0;
+    font-size: 1.2em;
 }
 
 nav ul {
@@ -46,7 +64,8 @@ main {
 
 
 .login-form, .registro-form {
-    background-color: #38895e;
+    
+    background-color: #417261;
     border-radius: 5px;
     padding: 20px;
     max-width: 400px;
@@ -63,6 +82,7 @@ main {
 .registro-form label, 
 .registro-form input, 
 .registro-form button {
+    font-family: 'StrokeWeight120', sans-serif;
     display: block;
     margin-bottom: 10px;
 }
@@ -179,7 +199,7 @@ main {
 }
 
 footer {
-    background-color: #333;
+    background-color: #4C8672;
     color: #fff;
     padding: 20px;
     text-align: center;
