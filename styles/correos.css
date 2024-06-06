@@ -229,7 +229,7 @@ nav ul li a {
 }
 
 .email-form button[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #69a88d;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -239,7 +239,7 @@ nav ul li a {
 }
 
 .email-form button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #477260;
 }
 
 footer {
