@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
             tablaBodyDocumentos.appendChild(fila);
         });
-    });
+    }); 
 
     // En el evento de clic en el botón de editar o borrar
     tablaBodyDocumentos.addEventListener('click', async (e) => {
