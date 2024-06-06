@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Documentos de Vehículos</title>
-    <link rel="stylesheet" type="text/css" href="../styles/documento_crud.css">
+    <title>CRUD de Vehículos</title>
+    <link rel="stylesheet" type="text/css" href="../styles/diseño_crud.css">
 </head>
 <script type="module" src="../controllers/Validations/logout.js"></script>
 <script type="module" src="../controllers/adds/togglesidebar.js"></script>
@@ -16,14 +16,14 @@
           <li><a href="#" class="btn" id="cerrar">Cerrar sesión</a></li>
         </ul>
       </div>
-    <header> 
-    
+    <header>
+
         <div class="header-container">
-            <img src="../resources/img/LogoPT.png" alt="Logo de VehiNotify" class="logo">
-            <h1>Tu recordatorio en Ruta</h1>
-            </div>
-          <div class="container">
-          <nav>
+          <img src="../resources/img/LogoPT.png" alt="Logo de VehiNotify" class="logo">
+          <h1>Tu recordatorio en Ruta</h1>
+          </div>
+        <div class="container">
+        <nav>
             <ul>
               <li><a href="./principal.html">Inicio</a></li>
               <li><a href="./informacion_central.html">Registrar Vehiculo</a></li>
@@ -31,7 +31,7 @@
               <li><a href="./documentos_crud.html">Modificar Documentos</a></li>
             </ul>
             <div class="header-icons">
-                <div class="toggle-btn">☰</div>
+                <div class="toggle-btn" >☰</div>
                 <div class="notification-icon">
                     <span class="notification-count" id="notificationCount"></span>
                     <img src="../resources/img/campanita.png" alt="Notificaciones" id="notificationBell">
@@ -40,90 +40,83 @@
         </div>
     </header>
     <div id="notificationContainer" class="notification-container"></div>
-    <main>
-        <div class="lista-vehiculos" id="listaDocumentos">
-            <h2>Documentos de Vehículos</h2>
-            <input type="text" id="buscarInput" placeholder="Buscar por placa...">
-            <table id="tablaDocumentos">
-                <thead>
-                    <tr>
-                        <th>Placa</th>
-                        <th>Tipo de Vehiculo</th>
-                        <th>SOAT</th>
-                        <th>Peritaje</th>
-                        <th>Tarjeta de Operación</th>
-                        <th>Extracto de Contrato</th>
-                        <th>Certificado de Quinta Rueda</th>
-                        <th>Certificado de King Pin</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="tablaBodyDocumentos">
-                </tbody>
-            </table>
-            <div id="ventanaEmergenteDocumentos" class="ventana-emergente" style="display: none;">
+        <main>
+            <div class="lista-vehiculos" id="listaVehiculos">
+                <h2>Lista de Vehículos</h2>
+                <input type="text" id="buscarInput" placeholder="Buscar por placa...">
+                <table id="tablaVehiculos">
+                    <thead>
+                        <tr>
+                            <th>Placa</th>
+                            <th>Tipo de Vehiculo</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Año</th>
+                            <th>Capacidad</th>
+                            <th>Estado</th>
+                            <th>SOAT</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaBody">
+                    </tbody>
+                </table>
+              <div id="ventanaEmergente" class="ventana-emergente">
                 <div class="contenido-ventana">
-                    <button class="cerrarV" id="cerrarV">X</button>
-                    <form id="formularioEdicionDocumentos">
-
-                        <div class="form-group">
-                            <label for="soat">URL del SOAT:</label>
-                            <input type="file" id="soat" class="custom-file-input" name="soat">
-                        </div>
-                        <div class="form-group">
-                            <label for="FechaS">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaS" name="FechaS" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="peritaje">URL del Peritaje:</label>
-                            <input type="file" id="peritaje" class="custom-file-input" name="peritaje">
-                        </div>
-                        <div class="form-group">
-                            <label for="FechaP">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaP" name="FechaP" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="tarjetaOperacion">URL de la Tarjeta de Operación:</label>
-                            <input type="file" id="tarjetaOperacion" class="custom-file-input" name="tarjetaOperacion">
-                        </div>
-                        <div class="form-group">
-                            <label for="FechaTO">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaTO" name="FechaTO" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="extractoContrato">URL del Extracto de Contrato:</label>
-                            <input type="file" id="extractoContrato" class="custom-file-input" name="extractoContrato">
-                        </div>
-                        <div class="form-group">
-                            <label for="FechaEC">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaEC" name="FechaEC" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="certQuintaRueda">URL del Certificado de Quinta Rueda:</label>
-                            <input type="file" id="certQuintaRueda" class="custom-file-input" name="certQuintaRueda">
-                        </div>
-                        <div class="form-group">
-                            <label for="FechaQR">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaQR" name="FechaQR" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="certKingPin">URL del Certificado de King Pin:</label>
-                            <input type="file" id="certKingPin" class="custom-file-input" name="certKingPin">
-                        </div>
-                        <div class="form-group">
-                            <label for="FechaKP">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaKP" name="FechaKP" class="form-control">
-                        </div>
+                  <button class="cerrarV" id="cerrarV">X</button>
+                  <form id="formularioEdicion" style="display: none;">
+                    <div class="form-group">
+                        <label for="tipo">Marca:</label>
+                        <input type="text" id="marca" name="marca" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo:</label>
+                        <input type="text" id="modelo" name="modelo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="marca">Marca:</label>
+                        <input type="text" id="marca" name="marca" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo:</label>
+                        <input type="text" id="modelo" name="modelo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="anio">Año:</label>
+                        <input type="text" id="anio" name="anio" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="capacidad">Capacidad:</label>
+                        <input type="text" id="capacidad" name="capacidad" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado:</label>
+                        <select id="estado" name="estado" class="form-control" required>
+                            <option value="Disponible">Disponible</option>
+                            <option value="En Mantenimiento">En Mantenimiento</option>
+                            <option value="Fuera de Servicio">Fuera de Servicio</option>
+                        </select>
+                        <label for="Soat">URL del SOAT:</label>
+                        <input type="file" id="Soat" class="custom-file-input" name="Soat">
+                      <div class="form-group">
+                          <label for="FechaS">Fecha de vencimiento:</label>
+                          <input type="date" id="FechaS" name="FechaS" class="form-control">
+                      </div>
+     
                         <button type="submit">Guardar Cambios</button>
-                    </form>
+                    </div>
+                </form>
+                
                 </div>
+              </div>
+
+
             </div>
-        </div>
-    </main>
+        </main>
     <footer>
         <p>&copy; 2024 VehiNotify. Todos los derechos reservados.</p>
     </footer>
     <script type="module" src="../controllers/Conection/firebase.js"></script>
-    <script type="module" src="../controllers/Modify/RUDDocumentos.js"></script>
+    <script type="module" src="../controllers/Modify/RUD.js"></script>
 </body>
 </html>
