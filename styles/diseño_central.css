@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'StrokeWeight120';
-  src: url('/resources/fonts/strokeweight-120.otf') format('opentype');
+  src: url('../resources/fonts/strokeweight-120.otf') format('opentype');
 }
 body {
   font-family: 'StrokeWeight120', sans-serif;
