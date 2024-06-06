@@ -77,7 +77,7 @@ body::-webkit-scrollbar {
 .logo {
     max-height: 100px;
     margin-right: 40px;
-    box-shadow: 3px 3px 13px 5px rgba(0, 0, 0, 0.3); /* Sombra para el logo */
+    box-shadow: 3px 3px 13px 5px rgba(0, 0, 0, 0.3); 
   }
 
 .sidebar {
@@ -148,17 +148,42 @@ body::-webkit-scrollbar {
 }
 
 .notification-container {
-    position: fixed;
-    top: 120px; 
-    right: 20px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    display: none; 
-    z-index: 999; 
+  position: fixed;
+  top: 120px; 
+  right: 40px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  max-height: 400px;
+  display: none; 
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.notification-container::-webkit-scrollbar {
+  width: 8px; 
+  border-radius: 5px; 
+}
+
+.notification-container::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 5px; 
+
+}
+
+.notification-container::-webkit-scrollbar-thumb {
+  background: #bcbcbc; 
+  border-radius: 5px; 
+
+}
+
+.notification-container::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+  border-radius: 5px; 
+
 }
 
 .notification {
