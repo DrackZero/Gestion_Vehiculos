@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td><a href="${QuintaRuedaURL}" target="_blank">Ver Cert. Quinta Rueda</a></td>
                 <td><a href="${KingPinURL}" target="_blank">Ver Cert. King Pin</a></td>
                 <td>
-                    <img src="../../resources/img/editar.png" class="editar" data-id="${vehiculo.Placa}"></img>
-                    <img src="../../resources/img/borrar.png" class="borrar" data-id="${vehiculo.Placa}"></img>
+                    <img src="../resources/img/editar.png" class="editar" data-id="${vehiculo.Placa}"></img>
+                    <img src="../resources/img/borrar.png" class="borrar" data-id="${vehiculo.Placa}"></img>
                 </td>
             `;
             tablaBodyDocumentos.appendChild(fila);
@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td><a href="${QuintaRuedaURL}" target="_blank">Ver Cert. Quinta Rueda</a></td>
                 <td><a href="${KingPinURL}" target="_blank">Ver Cert. King Pin</a></td>
                 <td>
-                    <img src="../../resources/img/editar.png" class="editar" data-id="${vehiculo.Placa}"></img>
-                    <img src="../../resources/img/borrar.png" class="borrar" data-id="${vehiculo.Placa}"></img>
+                    <img src="../resources/img/editar.png" class="editar" data-id="${vehiculo.Placa}"></img>
+                    <img src="../resources/img/borrar.png" class="borrar" data-id="${vehiculo.Placa}"></img>
                 </td>
             `;
             tablaBodyDocumentos.appendChild(fila);
