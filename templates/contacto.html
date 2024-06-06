@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviar Correos</title>
+  <link rel="stylesheet" href="../styles/correos.css">
+</head>
+
+<script type="module" src="../controllers/adds/contacto.js"></script>
+
+<body>
+
+  <div class="sidebar">
+    <ul>
+      <li><a href="/templates/correos_vehiculos.html" class="btn" id="Enviarcorreos">Correos</a></li>
+      <li><a href="#" class="btn" id="cerrar">Cerrar sesión</a></li>
+    </ul>
+  </div>
+
+  <header>
+    <div class="header-container">
+      <img src="/resources/img/LogoPT.png" alt="Logo de VehiNotify" class="logo">
+      <h1>Tu recordatorio en Ruta</h1>
+    </div>
+
+  </header>
+  
+
+  <main>
+    <div class="container">
+
+      <form id="emailForm" class="email-form">
+        <label for="to">Para:</label>
+        <input type="email" id="to" name="to" value="revenpruebas321@gmail.com" readonly>
+        
+        <label for="subject">Asunto:</label>
+        <input type="text" id="subject" name="subject" required>
+        
+        <label for="message">Mensaje:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        
+        <button type="submit">Enviar Correo</button>
+      </form>
+      
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 VehiNotify. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+
+</body>
+</html>
