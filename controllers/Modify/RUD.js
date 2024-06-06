@@ -54,8 +54,8 @@ const renderizarVehiculos = async () => {
                 <td>${vehiculo.Estado}</td>
                 <td><a href="${vehiculo.SoatURL}" target="_blank">Ver SOAT</a></td>
                 <td>
-                    <img src="../../resources/img/editar.png" class="editar" data-id="${vehiculo.id}"></img>
-                    <img src="../../resources/img/borrar.png" class="borrar" data-id="${vehiculo.id}"></img>
+                    <img src="../resources/img/editar.png" class="editar" data-id="${vehiculo.id}"></img>
+                    <img src="../resources/img/borrar.png" class="borrar" data-id="${vehiculo.id}"></img>
                 </td>
             `;
             tablaBody.appendChild(fila);
