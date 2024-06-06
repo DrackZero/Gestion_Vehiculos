@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       form.reset();
       
-      window.location.href = '../../index.html';
+      window.location.href = 'index.html';
     } catch (error) {
       console.error('Error al enviar el correo:', error);
       alert('Error al enviar el correo. Por favor, inténtalo de nuevo.');
