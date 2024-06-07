@@ -7,12 +7,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const formularioEdicionDocumentos = document.getElementById('formularioEdicionDocumentos');
     const cerrarVentanaBtn = document.getElementById('cerrarV');
 
-    // Función para renderizar los documentos en la tabla
     const renderizarDocumentos = async () => {
         const documentos = await listarVehiculos();
         tablaBodyDocumentos.innerHTML = '';
         documentos.forEach(async (vehiculo) => {
-            // Obtener los datos del vehículo
             const vehiculoData = await ConsultarVehiculo(vehiculo.Placa);
             const {
                 Placa,
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 QuintaRuedaURL,
                 KingPinURL
             } = vehiculoData;
-            // Crear la fila de la tabla con los enlaces a los documentos
             const fila = document.createElement('tr');
             fila.innerHTML = `
                 <td>${Placa}</td>
@@ -45,7 +42,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     await renderizarDocumentos();
 
-    // Función para filtrar documentos por placa al escribir en el buscador
     buscarInput.addEventListener('input', async () => {
         const searchTerm = buscarInput.value.toLowerCase();
         const documentos = await listarVehiculos();
@@ -81,7 +77,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }); 
 
-    // En el evento de clic en el botón de editar o borrar
     tablaBodyDocumentos.addEventListener('click', async (e) => {
         if (e.target.classList.contains('editar')) {
             const id = e.target.dataset.id;
