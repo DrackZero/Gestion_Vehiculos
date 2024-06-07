@@ -7,17 +7,14 @@ const vehiculoValores = document.getElementById('vehiculoValores');
 function mostrarInfoVehiculo(vehiculo) {
     const ordenAtributos = ['Placa', 'Marca', 'Modelo', 'Año', 'Estado', 'Capacidad_Carga', 'SoatURL'];
 
-    // Limpiar las filas de atributos y valores
     vehiculoAtributos.innerHTML = '';
     vehiculoValores.innerHTML = '';
 
     for (const atributo of ordenAtributos) {
-        // Crear los encabezados de atributos
         const th = document.createElement('th');
         th.textContent = atributo === 'SoatURL' ? 'SOAT' : atributo;
         vehiculoAtributos.appendChild(th);
 
-        // Crear los valores correspondientes
         const td = document.createElement('td');
         if (atributo === 'SoatURL') {
             const link = document.createElement('a');
