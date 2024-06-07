@@ -36,7 +36,6 @@ const renderizarVehiculos = async () => {
  
     await renderizarVehiculos();
 
-    // Función para filtrar vehículos por placa al escribir en el buscador
     buscarInput.addEventListener('input', async () => {
         const searchTerm = buscarInput.value.toLowerCase();
         const vehiculos = await listarVehiculos();
@@ -62,7 +61,6 @@ const renderizarVehiculos = async () => {
         });
     });
 
-    // En el evento de click en el botón de editar o borrar
     tablaBody.addEventListener('click', async (e) => {
         if (e.target.classList.contains('editar')) {
             const id = e.target.dataset.id; 
