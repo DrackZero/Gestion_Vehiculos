@@ -3,7 +3,7 @@ import { iniciar_sesion} from '../Conection/functions.js';
 
   const validar = document.getElementById('btnLogin');
   
-  let procesoEnCurso = false; // Variable para controlar si hay un proceso en curso
+  let procesoEnCurso = false; 
 
 
     async function Login() {
@@ -14,7 +14,7 @@ import { iniciar_sesion} from '../Conection/functions.js';
       const usuario = document.getElementById('correo').value;
       const clave = document.getElementById('contraseña').value;
 
-      procesoEnCurso = true; // Establecer el estado en proceso
+      procesoEnCurso = true; 
 
       try {
         const confirmar = await iniciar_sesion(usuario, clave);
@@ -29,7 +29,7 @@ import { iniciar_sesion} from '../Conection/functions.js';
         alert('El usuario no ha podido iniciar sesión.');
       }
 
-      procesoEnCurso = false; // Restablecer el estado al finalizar el proceso
+      procesoEnCurso = false; 
     }
 
     window.addEventListener('DOMContentLoaded', () => {
