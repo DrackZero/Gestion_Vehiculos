@@ -16,7 +16,6 @@ export function SesionState() {
   });
 }
 
-// Funciones de Firestore
 export const cargarArchivo = async (file, placa, tipoDocumento) => {
   const storageRef = ref(storage, `${tipoDocumento}/${placa}/${file.name}`);
   await uploadBytes(storageRef, file);
@@ -31,7 +30,6 @@ export const AgregarVehiculo = (tipo, marca, modelo, año, placa, capacidad, est
   const docRef = doc(db, "Vehiculos", placa);
   console.log("Document Reference:", docRef);
 
-  // Datos comunes a todos los tipos de vehículos
   const vehiculoData = {
       Tipo: tipo,
       Marca: marca,
@@ -45,7 +43,6 @@ export const AgregarVehiculo = (tipo, marca, modelo, año, placa, capacidad, est
       Email: email
   };
 
-  // Datos específicos según el tipo de vehículo
   if (tipo === "vehiculo_ligero") {
       vehiculoData.PeritajeURL = peritajeURL;
       vehiculoData.FechaPeritaje = fechaPeritaje;
