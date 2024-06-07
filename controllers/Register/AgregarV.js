@@ -11,15 +11,14 @@ async function guardarVehiculo(event) {
     const tipo = document.getElementById('tipo').value;
     const marca = document.getElementById('marca').value;
     const modelo = document.getElementById('modelo').value;
-    const año = parseInt(document.getElementById('año').value); // Convertir a número
+    const año = parseInt(document.getElementById('año').value); 
     const placa = document.getElementById('placa').value;
-    const capacidad = parseInt(document.getElementById('capacidad').value); // Convertir a número
+    const capacidad = parseInt(document.getElementById('capacidad').value);
     const estado = document.getElementById('estado').value;
     const soatFile = document.getElementById('Soat').files[0];
     const fechaSoat = new Date(document.getElementById('fechaS').value);
     const email = document.getElementById('email').value;
 
-    // Extra fields
     let peritajeFile = null, tarjetaOperacionFile = null, extractoContratoFile = null;
     let quintaRuedaFile = null, kingPinFile = null;
     let fechaPeritaje = null, fechaTarjetaOperacion = null, fechaExtractoContrato = null;
@@ -39,7 +38,6 @@ async function guardarVehiculo(event) {
         fechaKingPin = new Date(document.getElementById('fechaKP').value);
     }
 
-    // Validar campos obligatorios adicionales
     if (tipo === "vehiculo_ligero") {
         if (!fechaPeritaje || !fechaTarjetaOperacion || !fechaExtractoContrato) {
             alert('Por favor complete todos los campos obligatorios para vehículo ligero.');
@@ -96,21 +94,17 @@ function mostrarCamposAdicionales() {
     const ligeroFields = document.getElementById('ligeroFields');
     const articuladoFields = document.getElementById('articuladoFields');
     
-    // Mostrar u ocultar campos según el tipo de vehículo
     document.getElementById('commonFields').style.display = tipo ? 'block' : 'none';
     ligeroFields.style.display = tipo === 'vehiculo_ligero' ? 'block' : 'none';
     articuladoFields.style.display = tipo === 'vehiculo_articulado' ? 'block' : 'none';
     
-    // Hacer obligatorios o no los campos adicionales
     const requiredLigero = tipo === 'vehiculo_ligero';
     const requiredArticulado = tipo === 'vehiculo_articulado';
     
-    // Campos de vehículo ligero
     document.getElementById('fechaP').required = requiredLigero;
     document.getElementById('fechaT').required = requiredLigero;
     document.getElementById('fechaE').required = requiredLigero;
     
-    // Campos de vehículo articulado
     document.getElementById('fechaQR').required = requiredArticulado;
     document.getElementById('fechaKP').required = requiredArticulado;
 }
