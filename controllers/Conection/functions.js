@@ -11,7 +11,7 @@ export function SesionState() {
       const uid = user.uid;
       console.log(uid);
     } else {
-      window.location.href = "../index.html";
+      window.location.href = "../index.html"; 
     }
   });
 }
