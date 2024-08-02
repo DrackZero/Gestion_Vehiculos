@@ -208,14 +208,11 @@ nav ul li a {
     border-radius: 3px;
   }
 
-.subject{
-  
+.emailForm input {
     font-family: 'StrokeWeight120', sans-serif;
     display: block;
     margin-bottom: 10px;
-  
 }
-
 .btn {
   display: inline-block;
   background: #3a7e5a;
