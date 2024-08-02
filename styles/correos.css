@@ -207,7 +207,15 @@ nav ul li a {
     border: 1px solid #ccc;
     border-radius: 3px;
   }
+
+.subject{
   
+    font-family: 'StrokeWeight120', sans-serif;
+    display: block;
+    margin-bottom: 10px;
+  
+}
+
 .btn {
   display: inline-block;
   background: #3a7e5a;
