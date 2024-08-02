@@ -95,10 +95,9 @@ nav ul li a {
 
 }
 
-.container input {
+.emailForm subject {
     font-family: 'StrokeWeight120', sans-serif;
-    display: block;
-    margin-bottom: 10px;
+
 }
 
 
