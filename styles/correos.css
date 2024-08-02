@@ -95,6 +95,13 @@ nav ul li a {
 
 }
 
+.container input {
+    font-family: 'StrokeWeight120', sans-serif;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
 .logo {
   max-height: 100px;
   margin-right: 40px;
@@ -208,11 +215,7 @@ nav ul li a {
     border-radius: 3px;
   }
 
-.emailForm input {
-    font-family: 'StrokeWeight120', sans-serif;
-    display: block;
-    margin-bottom: 10px;
-}
+
 .btn {
   display: inline-block;
   background: #3a7e5a;
