@@ -15,22 +15,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             const {
                 Placa,
                 SoatURL,
-                PeritajeURL,
                 TarjetaOperacionURL,
-                ExtractoContratoURL,
-                QuintaRuedaURL,
-                KingPinURL
+                TarjetaPropiedadURL,
+                RevisionTecMecURL
             } = vehiculoData;
             const fila = document.createElement('tr');
             fila.innerHTML = `
                 <td>${Placa}</td>
                 <td>${vehiculo.Tipo.replace('_', ' ')}</td> 
                 <td><a href="${SoatURL}" target="_blank">Ver SOAT</a></td>
-                <td><a href="${PeritajeURL}" target="_blank">Ver Peritaje</a></td>
                 <td><a href="${TarjetaOperacionURL}" target="_blank">Ver Tarjeta de Operación</a></td>
-                <td><a href="${ExtractoContratoURL}" target="_blank">Ver Extracto de Contrato</a></td>
-                <td><a href="${QuintaRuedaURL}" target="_blank">Ver Cert. Quinta Rueda</a></td>
-                <td><a href="${KingPinURL}" target="_blank">Ver Cert. King Pin</a></td>
+                <td><a href="${TarjetaPropiedadURL}" target="_blank">Ver Tarjeta de Propiedad</a></td>
+                <td><a href="${RevisionTecMecURL}" target="_blank">Ver Revisión Técnico Mecánica</a></td>
                 <td>
                     <img src="../resources/img/editar.png" class="editar" data-id="${vehiculo.Placa}"></img>
                     <img src="../resources/img/borrar.png" class="borrar" data-id="${vehiculo.Placa}"></img>
@@ -52,22 +48,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             const { 
                 Placa,
                 SoatURL,
-                PeritajeURL,
                 TarjetaOperacionURL,
-                ExtractoContratoURL,
-                QuintaRuedaURL,
-                KingPinURL
+                TarjetaPropiedadURL,
+                RevisionTecMecURL
             } = vehiculoData;
             const fila = document.createElement('tr');
             fila.innerHTML = `
                 <td>${Placa}</td>
                 <td>${vehiculo.Tipo.replace('_', ' ')}</td> 
                 <td><a href="${SoatURL}" target="_blank">Ver SOAT</a></td>
-                <td><a href="${PeritajeURL}" target="_blank">Ver Peritaje</a></td>
                 <td><a href="${TarjetaOperacionURL}" target="_blank">Ver Tarjeta de Operación</a></td>
-                <td><a href="${ExtractoContratoURL}" target="_blank">Ver Extracto de Contrato</a></td>
-                <td><a href="${QuintaRuedaURL}" target="_blank">Ver Cert. Quinta Rueda</a></td>
-                <td><a href="${KingPinURL}" target="_blank">Ver Cert. King Pin</a></td>
+                <td><a href="${TarjetaPropiedadURL}" target="_blank">Ver Tarjeta de Propiedad</a></td>
+                <td><a href="${RevisionTecMecURL}" target="_blank">Ver Revisión Técnico Mecánica</a></td>
                 <td>
                     <img src="../resources/img/editar.png" class="editar" data-id="${vehiculo.Placa}"></img>
                     <img src="../resources/img/borrar.png" class="borrar" data-id="${vehiculo.Placa}"></img>
@@ -75,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
             tablaBodyDocumentos.appendChild(fila);
         });
-    }); 
+    });
 
     tablaBodyDocumentos.addEventListener('click', async (e) => {
         if (e.target.classList.contains('editar')) {
@@ -98,24 +90,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             const nuevosDatos = {
                 SoatURL: await manejarArchivoSubido(formularioEdicionDocumentos.soat),
                 FechaS: formularioEdicionDocumentos.FechaS.value,
-                PeritajeURL: await manejarArchivoSubido(formularioEdicionDocumentos.peritaje),
-                FechaP: formularioEdicionDocumentos.FechaP.value,
                 TarjetaOperacionURL: await manejarArchivoSubido(formularioEdicionDocumentos.tarjetaOperacion),
-                FechaTO: formularioEdicionDocumentos.FechaTO.value,
-                ExtractoContratoURL: await manejarArchivoSubido(formularioEdicionDocumentos.extractoContrato),
-                FechaEC: formularioEdicionDocumentos.FechaEC.value,
-                QuintaRuedaURL: await manejarArchivoSubido(formularioEdicionDocumentos.certQuintaRueda),
-                FechaQR: formularioEdicionDocumentos.FechaQR.value,
-                KingPinURL: await manejarArchivoSubido(formularioEdicionDocumentos.certKingPin),
-                FechaKP: formularioEdicionDocumentos.FechaKP.value,
+                FechaTO: formularioEdicionDocumentos.FechaT.value,
+                TarjetaPropiedadURL: await manejarArchivoSubido(formularioEdicionDocumentos.tarjetaPropiedad),
+                FechaTP: formularioEdicionDocumentos.FechaTP.value,
+                RevisionTecMecURL: await manejarArchivoSubido(formularioEdicionDocumentos.revisionTecMec),
+                FechaRTM: formularioEdicionDocumentos.FechaRT.value,
             };
             await editarVehiculo(vehiculo.Placa, nuevosDatos);
             ventanaEmergenteDocumentos.style.display = 'none';
             await renderizarDocumentos();
         };
     };
-    
-
 
     const manejarArchivoSubido = async (inputElement) => {
         if (inputElement.files.length > 0) {
@@ -128,5 +114,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     cerrarVentanaBtn.addEventListener('click', () => {
         ventanaEmergenteDocumentos.style.display = 'none';
+    });
+});
+Documentos.style.display = 'none';
     });
 });
