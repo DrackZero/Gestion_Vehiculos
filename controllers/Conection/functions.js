@@ -23,9 +23,9 @@ export const cargarArchivo = async (file, placa, tipoDocumento) => {
   return url;
 };
 
-export const AgregarVehiculo = (tipo, marca, modelo, año, placa, capacidad, estado, soatURL, fechaSoat, email, 
+export const AgregarVehiculo = (tipo, marca, modelo, año, placa, capacidad, estado, soatURL, fechaSoat, email, revisionTecURL, fechaRevisionTec, 
     tarjetaOperacionURL, fechaTarjetaOperacion, tarjetaPropiedadURL, fechaTarjetaPropiedad, 
-    revisionTecnicoMecanicaURL, fechaRevisionTecnicoMecanica) => {
+    ) => {
 
     const docRef = doc(db, "Vehiculos", placa);
     console.log("Document Reference:", docRef);
@@ -41,12 +41,13 @@ export const AgregarVehiculo = (tipo, marca, modelo, año, placa, capacidad, est
         SoatURL: soatURL,
         FechaSoat: fechaSoat,
         Email: email,
+        RevisionTecURL: revisionTecURL,
+        FechaRevisionTec: fechaRevisionTec,
         TarjetaOperacionURL: tarjetaOperacionURL,
         FechaTarjetaOperacion: fechaTarjetaOperacion,
         TarjetaPropiedadURL: tarjetaPropiedadURL,
         FechaTarjetaPropiedad: fechaTarjetaPropiedad,
-        RevisionTecnicoMecanicaURL: revisionTecnicoMecanicaURL,
-        FechaRevisionTecnicoMecanica: fechaRevisionTecnicoMecanica
+        
     };
 
     return setDoc(docRef, vehiculoData)
