@@ -116,6 +116,4 @@ document.addEventListener('DOMContentLoaded', async () => {
         ventanaEmergenteDocumentos.style.display = 'none';
     });
 });
-Documentos.style.display = 'none';
-    });
-});
+
