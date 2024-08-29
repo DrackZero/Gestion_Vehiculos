@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 SoatURL,
                 TarjetaOperacionURL,
                 TarjetaPropiedadURL,
-                RevisionTecMecURL
+                RevisionTecURL
             } = vehiculoData;
             const fila = document.createElement('tr');
             fila.innerHTML = `
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td><a href="${SoatURL}" target="_blank">Ver SOAT</a></td>
                 <td><a href="${TarjetaOperacionURL}" target="_blank">Ver Tarjeta de Operación</a></td>
                 <td><a href="${TarjetaPropiedadURL}" target="_blank">Ver Tarjeta de Propiedad</a></td>
-                <td><a href="${RevisionTecMecURL}" target="_blank">Ver Revisión Técnico Mecánica</a></td>
+                <td><a href="${RevisionTecURL}" target="_blank">Ver Revisión Técnico Mecánica</a></td>
                 <td>
                     <img src="../resources/img/editar.png" class="editar" data-id="${vehiculo.Placa}"></img>
                     <img src="../resources/img/borrar.png" class="borrar" data-id="${vehiculo.Placa}"></img>
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 SoatURL,
                 TarjetaOperacionURL,
                 TarjetaPropiedadURL,
-                RevisionTecMecURL
+                RevisionTecURL
             } = vehiculoData;
             const fila = document.createElement('tr');
             fila.innerHTML = `
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td><a href="${SoatURL}" target="_blank">Ver SOAT</a></td>
                 <td><a href="${TarjetaOperacionURL}" target="_blank">Ver Tarjeta de Operación</a></td>
                 <td><a href="${TarjetaPropiedadURL}" target="_blank">Ver Tarjeta de Propiedad</a></td>
-                <td><a href="${RevisionTecMecURL}" target="_blank">Ver Revisión Técnico Mecánica</a></td>
+                <td><a href="${RevisionTecURL}" target="_blank">Ver Revisión Técnico Mecánica</a></td>
                 <td>
                     <img src="../resources/img/editar.png" class="editar" data-id="${vehiculo.Placa}"></img>
                     <img src="../resources/img/borrar.png" class="borrar" data-id="${vehiculo.Placa}"></img>
@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 FechaTO: formularioEdicionDocumentos.FechaT.value,
                 TarjetaPropiedadURL: await manejarArchivoSubido(formularioEdicionDocumentos.tarjetaPropiedad),
                 FechaTP: formularioEdicionDocumentos.FechaTP.value,
-                RevisionTecMecURL: await manejarArchivoSubido(formularioEdicionDocumentos.revisionTecMec),
-                FechaRTM: formularioEdicionDocumentos.FechaRT.value,
+                RevisionTecURL: await manejarArchivoSubido(formularioEdicionDocumentos.revisionTecMec),
+                FechaRT: formularioEdicionDocumentos.FechaRT.value,
             };
             await editarVehiculo(vehiculo.Placa, nuevosDatos);
             ventanaEmergenteDocumentos.style.display = 'none';
@@ -116,4 +116,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         ventanaEmergenteDocumentos.style.display = 'none';
     });
 });
+
 
