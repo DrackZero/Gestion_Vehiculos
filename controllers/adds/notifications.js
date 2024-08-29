@@ -26,8 +26,10 @@ export async function updateNotifications() {
 
             const documents = [
                 { name: 'SOAT', expiryDate: vehicle.FechaSoat },
+                { name: 'Revisión Técnico Mecánica', expiryDate: vehicle.FechaRevisionTec },
                 { name: 'Peritaje', expiryDate: vehicle.FechaPeritaje },
                 { name: 'Tarjeta de Operación', expiryDate: vehicle.FechaTarjetaOperacion },
+                { name: 'Tarjeta de Propiedad', expiryDate: vehicle.FechaTarjetaPropiedad },
                 { name: 'Extracto de Contrato', expiryDate: vehicle.FechaExtractoContrato },
                 { name: 'Quinta Rueda', expiryDate: vehicle.FechaQuintaRueda },
                 { name: 'King Pin', expiryDate: vehicle.FechaKingPin }
@@ -35,7 +37,14 @@ export async function updateNotifications() {
 
             documents.forEach(doc => {
                 if (doc.expiryDate) {
-                    const expiryDate = doc.expiryDate.toDate();
+                    let expiryDate;
+
+                    if (doc.expiryDate.toDate) {
+                        expiryDate = doc.expiryDate.toDate(); // Si es un Timestamp de Firebase
+                    } else {
+                        expiryDate = new Date(doc.expiryDate); // Asume que es una cadena de fecha
+                    }
+
                     const timeDiff = expiryDate - now;
                     const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
                     console.log(`${doc.name} - Days until expiry:`, dayDiff);
@@ -79,7 +88,6 @@ export async function toggleNotificationContainer() {
         notificationContainer.style.display = 'none'; 
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', updateNotifications);
 
