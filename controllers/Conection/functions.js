@@ -24,49 +24,43 @@ export const cargarArchivo = async (file, placa, tipoDocumento) => {
 };
 
 export const AgregarVehiculo = (tipo, marca, modelo, año, placa, capacidad, estado, soatURL, fechaSoat, email, 
-  peritajeURL, fechaPeritaje, tarjetaOperacionURL, fechaTarjetaOperacion, extractoContratoURL, fechaExtractoContrato,
-  quintaRuedaURL, fechaQuintaRueda, kingPinURL, fechaKingPin) => {
+    tarjetaOperacionURL, fechaTarjetaOperacion, tarjetaPropiedadURL, fechaTarjetaPropiedad, 
+    revisionTecnicoMecanicaURL, fechaRevisionTecnicoMecanica) => {
 
-  const docRef = doc(db, "Vehiculos", placa);
-  console.log("Document Reference:", docRef);
+    const docRef = doc(db, "Vehiculos", placa);
+    console.log("Document Reference:", docRef);
 
-  const vehiculoData = {
-      Tipo: tipo,
-      Marca: marca,
-      Modelo: modelo,
-      Año: año,
-      Placa: placa,
-      Capacidad_Carga: capacidad,
-      Estado: estado,
-      SoatURL: soatURL,
-      FechaSoat: fechaSoat,
-      Email: email
-  };
+    const vehiculoData = {
+        Tipo: tipo,
+        Marca: marca,
+        Modelo: modelo,
+        Año: año,
+        Placa: placa,
+        Capacidad_Carga: capacidad,
+        Estado: estado,
+        SoatURL: soatURL,
+        FechaSoat: fechaSoat,
+        Email: email,
+        TarjetaOperacionURL: tarjetaOperacionURL,
+        FechaTarjetaOperacion: fechaTarjetaOperacion,
+        TarjetaPropiedadURL: tarjetaPropiedadURL,
+        FechaTarjetaPropiedad: fechaTarjetaPropiedad,
+        RevisionTecnicoMecanicaURL: revisionTecnicoMecanicaURL,
+        FechaRevisionTecnicoMecanica: fechaRevisionTecnicoMecanica
+    };
 
-  if (tipo === "vehiculo_ligero") {
-      vehiculoData.PeritajeURL = peritajeURL;
-      vehiculoData.FechaPeritaje = fechaPeritaje;
-      vehiculoData.TarjetaOperacionURL = tarjetaOperacionURL;
-      vehiculoData.FechaTarjetaOperacion = fechaTarjetaOperacion;
-      vehiculoData.ExtractoContratoURL = extractoContratoURL;
-      vehiculoData.FechaExtractoContrato = fechaExtractoContrato;
-  } else if (tipo === "vehiculo_articulado") {
-      vehiculoData.QuintaRuedaURL = quintaRuedaURL;
-      vehiculoData.FechaQuintaRueda = fechaQuintaRueda;
-      vehiculoData.KingPinURL = kingPinURL;
-      vehiculoData.FechaKingPin = fechaKingPin;
-  }
-
-  return setDoc(docRef, vehiculoData)
-      .then(() => {
-          console.log("Document successfully written!");
-          return docRef; 
-      })
-      .catch((error) => {
-          console.error("Error writing document: ", error);
-          throw error;
-      });
+    return setDoc(docRef, vehiculoData)
+        .then(() => {
+            console.log("Document successfully written!");
+            return docRef; 
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error);
+            throw error;
+        });
 };
+
+
 
 
 export const listarVehiculos = async () => {
