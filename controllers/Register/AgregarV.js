@@ -19,64 +19,36 @@ async function guardarVehiculo(event) {
     const fechaSoat = new Date(document.getElementById('fechaS').value);
     const email = document.getElementById('email').value;
 
-    let peritajeFile = null, tarjetaOperacionFile = null, extractoContratoFile = null;
-    let quintaRuedaFile = null, kingPinFile = null;
-    let fechaPeritaje = null, fechaTarjetaOperacion = null, fechaExtractoContrato = null;
-    let fechaQuintaRueda = null, fechaKingPin = null;
-    
-    if (tipo === "vehiculo_ligero") {
-        peritajeFile = document.getElementById('peritaje').files[0];
-        tarjetaOperacionFile = document.getElementById('tarjetaOperacion').files[0];
-        extractoContratoFile = document.getElementById('extractoContrato').files[0];
-        fechaPeritaje = new Date(document.getElementById('fechaP').value);
-        fechaTarjetaOperacion = new Date(document.getElementById('fechaT').value);
-        fechaExtractoContrato = new Date(document.getElementById('fechaE').value);
-    } else if (tipo === "vehiculo_articulado") {
-        quintaRuedaFile = document.getElementById('quintaRueda').files[0];
-        kingPinFile = document.getElementById('kingPin').files[0];
-        fechaQuintaRueda = new Date(document.getElementById('fechaQR').value);
-        fechaKingPin = new Date(document.getElementById('fechaKP').value);
-    }
+    const revisionTecFile = document.getElementById('revisionTec').files[0];
+    const tarjetaPropiedadFile = document.getElementById('tarjetaPropiedad').files[0];
+    const tarjetaOperacionFile = document.getElementById('tarjetaOperacion').files[0];
+    const fechaRevisionTec = new Date(document.getElementById('fechaRT').value);
+    const fechaTarjetaOperacion = new Date(document.getElementById('fechaT').value);
 
-    if (tipo === "vehiculo_ligero") {
-        if (!fechaPeritaje || !fechaTarjetaOperacion || !fechaExtractoContrato) {
-            alert('Por favor complete todos los campos obligatorios para vehículo ligero.');
-            return;
-        }
-    } else if (tipo === "vehiculo_articulado") {
-        if (!fechaQuintaRueda || !fechaKingPin) {
-            alert('Por favor complete todos los campos obligatorios para vehículo articulado.');
-            return;
-        }
+    if (!fechaRevisionTec || !fechaTarjetaOperacion) {
+        alert('Por favor complete todos los campos obligatorios.');
+        return;
     }
 
     try {
-        let soatURL = '', peritajeURL = '', tarjetaOperacionURL = '', extractoContratoURL = '';
-        let quintaRuedaURL = '', kingPinURL = '';
+        let soatURL = '', revisionTecURL = '', tarjetaPropiedadURL = '', tarjetaOperacionURL = '';
 
         if (soatFile) {
             soatURL = await cargarArchivo(soatFile, placa, 'soat');
         }
-        if (peritajeFile) {
-            peritajeURL = await cargarArchivo(peritajeFile, placa, 'peritaje');
+        if (revisionTecFile) {
+            revisionTecURL = await cargarArchivo(revisionTecFile, placa, 'revisionTec');
+        }
+        if (tarjetaPropiedadFile) {
+            tarjetaPropiedadURL = await cargarArchivo(tarjetaPropiedadFile, placa, 'tarjetaPropiedad');
         }
         if (tarjetaOperacionFile) {
             tarjetaOperacionURL = await cargarArchivo(tarjetaOperacionFile, placa, 'tarjetaOperacion');
         }
-        if (extractoContratoFile) {
-            extractoContratoURL = await cargarArchivo(extractoContratoFile, placa, 'extractoContrato');
-        }
-        if (quintaRuedaFile) {
-            quintaRuedaURL = await cargarArchivo(quintaRuedaFile, placa, 'quintaRueda');
-        }
-        if (kingPinFile) {
-            kingPinURL = await cargarArchivo(kingPinFile, placa, 'kingPin');
-        }
 
         const verificar = await AgregarVehiculo(
             tipo, marca, modelo, año, placa, capacidad, estado, soatURL, fechaSoat, email,
-            peritajeURL, fechaPeritaje, tarjetaOperacionURL, fechaTarjetaOperacion, extractoContratoURL, fechaExtractoContrato,
-            quintaRuedaURL, fechaQuintaRueda, kingPinURL, fechaKingPin
+            revisionTecURL, fechaRevisionTec, tarjetaPropiedadURL, tarjetaOperacionURL, fechaTarjetaOperacion
         );
         alert('Registro exitoso.');
         console.log("Document written with ID: ", verificar.id);
@@ -88,33 +60,13 @@ async function guardarVehiculo(event) {
     }
 }
 
-
 function mostrarCamposAdicionales() {
-    const tipo = document.getElementById('tipo').value;
-    const ligeroFields = document.getElementById('ligeroFields');
-    const articuladoFields = document.getElementById('articuladoFields');
-    
-    document.getElementById('commonFields').style.display = tipo ? 'block' : 'none';
-    ligeroFields.style.display = tipo === 'vehiculo_ligero' ? 'block' : 'none';
-    articuladoFields.style.display = tipo === 'vehiculo_articulado' ? 'block' : 'none';
-    
-    const requiredLigero = tipo === 'vehiculo_ligero';
-    const requiredArticulado = tipo === 'vehiculo_articulado';
-    
-    document.getElementById('fechaP').required = requiredLigero;
-    document.getElementById('fechaT').required = requiredLigero;
-    document.getElementById('fechaE').required = requiredLigero;
-    
-    document.getElementById('fechaQR').required = requiredArticulado;
-    document.getElementById('fechaKP').required = requiredArticulado;
+    document.getElementById('commonFields').style.display = 'block';
 }
 
 window.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('vehicleForm');
     form.addEventListener('submit', guardarVehiculo);
 
-    const tipoSelect = document.getElementById('tipo');
-    tipoSelect.addEventListener('change', mostrarCamposAdicionales);
-    
     mostrarCamposAdicionales();
 });
