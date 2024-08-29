@@ -24,6 +24,8 @@ async function guardarVehiculo(event) {
     const tarjetaOperacionFile = document.getElementById('tarjetaOperacion').files[0];
     const fechaRevisionTec = new Date(document.getElementById('fechaRT').value);
     const fechaTarjetaOperacion = new Date(document.getElementById('fechaT').value);
+    const fechaTarjetaPropiedad = new Date(document.getElementById('fechaTP').value);
+
 
     if (!fechaRevisionTec || !fechaTarjetaOperacion) {
         alert('Por favor complete todos los campos obligatorios.');
@@ -48,7 +50,7 @@ async function guardarVehiculo(event) {
 
         const verificar = await AgregarVehiculo(
             tipo, marca, modelo, año, placa, capacidad, estado, soatURL, fechaSoat, email,
-            revisionTecURL, fechaRevisionTec, tarjetaPropiedadURL, tarjetaOperacionURL, fechaTarjetaOperacion
+            revisionTecURL, fechaRevisionTec, tarjetaPropiedadURL, tarjetaOperacionURL, fechaTarjetaOperacion, fechaTarjetaPropiedad
         );
         alert('Registro exitoso.');
         console.log("Document written with ID: ", verificar.id);
