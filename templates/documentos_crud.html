@@ -15,14 +15,13 @@
           <li><a href="./correos_vehiculos.html" class="btn" id="Enviarcorreos">Correos</a></li>
           <li><a href="#" class="btn" id="cerrar">Cerrar sesión</a></li>
         </ul>
-      </div>
+    </div>
     <header>
-    
         <div class="header-container">
             <img src="../resources/img/LogoPT.png" alt="Logo de VehiNotify" class="logo">
             <h1>Tu recordatorio en Ruta</h1>
-            </div>
-          <div class="container">
+        </div>
+        <div class="container">
           <nav>
             <ul>
               <li><a href="./principal.html">Inicio</a></li>
@@ -50,11 +49,9 @@
                         <th>Placa</th>
                         <th>Tipo de Vehiculo</th>
                         <th>SOAT</th>
-                        <th>Peritaje</th>
                         <th>Tarjeta de Operación</th>
-                        <th>Extracto de Contrato</th>
-                        <th>Certificado de Quinta Rueda</th>
-                        <th>Certificado de King Pin</th>
+                        <th>Tarjeta de Propiedad</th>
+                        <th>Revisión Técnico Mecánica</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -65,7 +62,6 @@
                 <div class="contenido-ventana">
                     <button class="cerrarV" id="cerrarV">X</button>
                     <form id="formularioEdicionDocumentos">
-
                         <div class="form-group">
                             <label for="soat">URL del SOAT:</label>
                             <input type="file" id="soat" class="custom-file-input" name="soat">
@@ -73,14 +69,6 @@
                         <div class="form-group">
                             <label for="FechaS">Fecha de vencimiento:</label>
                             <input type="date" id="FechaS" name="FechaS" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="peritaje">URL del Peritaje:</label>
-                            <input type="file" id="peritaje" class="custom-file-input" name="peritaje">
-                        </div>
-                        <div class="form-group">
-                            <label for="FechaP">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaP" name="FechaP" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="tarjetaOperacion">URL de la Tarjeta de Operación:</label>
@@ -91,28 +79,20 @@
                             <input type="date" id="FechaTO" name="FechaTO" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="extractoContrato">URL del Extracto de Contrato:</label>
-                            <input type="file" id="extractoContrato" class="custom-file-input" name="extractoContrato">
+                            <label for="tarjetaPropiedad">URL de la Tarjeta de Propiedad:</label>
+                            <input type="file" id="tarjetaPropiedad" class="custom-file-input" name="tarjetaPropiedad">
                         </div>
                         <div class="form-group">
-                            <label for="FechaEC">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaEC" name="FechaEC" class="form-control">
+                            <label for="FechaTP">Fecha de vencimiento:</label>
+                            <input type="date" id="FechaTP" name="FechaTP" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="certQuintaRueda">URL del Certificado de Quinta Rueda:</label>
-                            <input type="file" id="certQuintaRueda" class="custom-file-input" name="certQuintaRueda">
+                            <label for="revisionTec">URL de la Revisión Técnico Mecánica:</label>
+                            <input type="file" id="revisionTec" class="custom-file-input" name="revisionTec">
                         </div>
                         <div class="form-group">
-                            <label for="FechaQR">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaQR" name="FechaQR" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="certKingPin">URL del Certificado de King Pin:</label>
-                            <input type="file" id="certKingPin" class="custom-file-input" name="certKingPin">
-                        </div>
-                        <div class="form-group">
-                            <label for="FechaKP">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaKP" name="FechaKP" class="form-control">
+                            <label for="FechaRTM">Fecha de vencimiento:</label>
+                            <input type="date" id="FechaRTM" name="FechaRTM" class="form-control">
                         </div>
                         <button type="submit">Guardar Cambios</button>
                     </form>
