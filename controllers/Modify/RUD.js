@@ -1,36 +1,38 @@
 import { cargarArchivo, listarVehiculos, editarVehiculo, borrarVehiculo, ConsultarVehiculo } from '../Conection/functions.js';
 
+
 document.addEventListener('DOMContentLoaded', async () => {
     const tablaBody = document.getElementById('tablaBody');
     const buscarInput = document.getElementById('buscarInput');
 
-    const renderizarVehiculos = async () => {
-        try {
-            const vehiculos = await listarVehiculos();
-            tablaBody.innerHTML = '';
-            vehiculos.forEach((vehiculo) => {
-                const fila = document.createElement('tr');
-                fila.innerHTML = `
-                    <td>${vehiculo.Placa}</td>
-                    <td>${vehiculo.Tipo.replace('_', ' ')}</td> 
-                    <td>${vehiculo.Marca}</td>
-                    <td>${vehiculo.Modelo}</td>
-                    <td>${vehiculo.Año}</td>
-                    <td>${vehiculo.Capacidad_Carga} KG</td>
-                    <td>${vehiculo.Estado}</td>
-                    <td><a href="${vehiculo.SoatURL}" target="_blank">Ver SOAT</a></td>
-                    <td>
-                        <img src="../resources/img/editar.png" class="editar" data-id="${vehiculo.id}"></img>
-                        <img src="../resources/img/borrar.png" class="borrar" data-id="${vehiculo.id}"></img>
-                    </td>
-                `;
-                tablaBody.appendChild(fila);
-            });
-        } catch (error) {
-            console.error("Error al renderizar los vehículos:", error);
-        }
-    };
+const renderizarVehiculos = async () => {
+    try {
+        const vehiculos = await listarVehiculos();
+        tablaBody.innerHTML = '';
+        vehiculos.forEach((vehiculo) => {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${vehiculo.Placa}</td>
+                <td>${vehiculo.Tipo.replace('_', ' ')}</td> 
+                <td>${vehiculo.Marca}</td>
+                <td>${vehiculo.Modelo}</td>
+                <td>${vehiculo.Año}</td>
+                <td>${vehiculo.Capacidad_Carga}KG</td>
+                <td>${vehiculo.Estado}</td>
+                <td><a href="${vehiculo.SoatURL}" target="_blank">Ver SOAT</a></td>
+                <td>
+                    <img src="../resources/img/editar.png" class="editar" data-id="${vehiculo.id}"></img>
+                    <img src="../resources/img/borrar.png" class="borrar" data-id="${vehiculo.id}"></img>
+                </td>
+            `;
+            tablaBody.appendChild(fila);
+        });
+    } catch (error) {
+        console.error("Error al renderizar los vehículos:", error);
+    }
+};
 
+ 
     await renderizarVehiculos();
 
     buscarInput.addEventListener('input', async () => {
@@ -81,30 +83,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         const ventanaE = document.getElementById('ventanaEmergente');
 
         formulario.style.display = 'block';
-        formulario['tipo'].value = vehiculo.Tipo;
         formulario['marca'].value = vehiculo.Marca;
         formulario['modelo'].value = vehiculo.Modelo;
-        formulario['año'].value = vehiculo.Año;
-        formulario['placa'].value = vehiculo.Placa;
+        formulario['anio'].value = vehiculo.Año;
         formulario['capacidad'].value = vehiculo.Capacidad_Carga;
         formulario['estado'].value = vehiculo.Estado;
-        formulario['email'].value = vehiculo.Email_Conductor;
-        formulario['fechaS'].value = vehiculo.Fecha_Soat;
-        // Puedes añadir más campos según los datos de tu formulario
 
         formulario.addEventListener('submit', async (e) => {
             e.preventDefault();
             const nuevosDatos = {
-                Tipo: formulario['tipo'].value,
                 Marca: formulario['marca'].value,
                 Modelo: formulario['modelo'].value,
-                Año: formulario['año'].value,
-                Placa: formulario['placa'].value,
+                Año: formulario['anio'].value,
                 Capacidad_Carga: formulario['capacidad'].value,
-                Estado: formulario['estado'].value,
-                Email_Conductor: formulario['email'].value,
-                Fecha_Soat: formulario['fechaS'].value,
-                // Añadir más campos si es necesario
+                Estado: formulario['estado'].value
             };
 
             const fileInput = formulario['Soat'];
@@ -138,4 +130,3 @@ document.addEventListener('DOMContentLoaded', () => {
         ventanaEmergente.style.display = 'none';
     });
 });
-
