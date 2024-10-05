@@ -50,7 +50,7 @@ async function guardarVehiculo(event) {
 
         const verificar = await AgregarVehiculo(
             tipo, marca, modelo, año, placa, capacidad, estado, soatURL, fechaSoat, email,
-            revisionTecURL, fechaRevisionTec, tarjetaPropiedadURL, tarjetaOperacionURL, fechaTarjetaOperacion, fechaTarjetaPropiedad
+            revisionTecURL, fechaRevisionTec, tarjetaPropiedadURL, fechaTarjetaPropiedad, tarjetaOperacionURL, fechaTarjetaOperacion
         );
         alert('Registro exitoso.');
         console.log("Document written with ID: ", verificar.id);
