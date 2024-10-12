@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             Año: formulario['anio'].value,
             Capacidad_Carga: formulario['capacidad'].value,
             Estado: formulario['estado'].value,
-            FechaSoat: new Date(formulario['FechaS'].value).toISOString()  // Convertir a ISO string
+            FechaSoat: new Date(formulario['FechaS'].value)  // Convertir a ISO string
 
         };
 
