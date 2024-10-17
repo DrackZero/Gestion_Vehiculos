@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    // Renderizar vehículos al cargar la página
     await renderizarVehiculos();
 
     // Búsqueda de vehículos
@@ -64,22 +63,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // Escuchar eventos de editar o borrar en la tabla
     tablaBody.addEventListener('click', async (e) => {
         if (e.target.classList.contains('editar')) {
             const id = e.target.dataset.id;
             const vehiculo = await ConsultarVehiculo(id);
-            mostrarFormularioEdicion(vehiculo); // Mostrar el formulario con los datos del vehículo
+            mostrarFormularioEdicion(vehiculo); 
         } else if (e.target.classList.contains('borrar')) {
             const id = e.target.dataset.id;
             if (confirm('¿Estás seguro de que deseas borrar este vehículo?')) {
                 await borrarVehiculo(id);
-                await renderizarVehiculos(); // Volver a cargar la lista después de eliminar
+                await renderizarVehiculos(); 
             }
         }
     });
 
-    // Mostrar formulario de edición con los datos del vehículo
     function mostrarFormularioEdicion(vehiculo) {
         formulario.style.display = 'block';
         formulario['marca'].value = vehiculo.Marca;
@@ -87,22 +84,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         formulario['anio'].value = vehiculo.Año;
         formulario['capacidad'].value = vehiculo.Capacidad_Carga;
         formulario['estado'].value = vehiculo.Estado;
-        if (vehiculo.FechaS) {
-            formulario['FechaS'].value = vehiculo.FechaS;
-        } else {
-            formulario['FechaS'].value = '';  // O podrías dejarlo vacío
-        }
+    
+        formulario['FechaS'].value = vehiculo.FechaSoat;
+       
+   
         
-        formulario.dataset.placa = vehiculo.Placa; // Guardar la placa en el dataset del formulario
-        ventanaEmergente.style.display = 'block'; // Mostrar la ventana emergente
+        formulario.dataset.placa = vehiculo.Placa; 
+        ventanaEmergente.style.display = 'block'; 
     }
 
-    // Manejo del evento de cierre del formulario
     cerrarVentanaBtn.addEventListener('click', () => {
-        ventanaEmergente.style.display = 'none'; // Cerrar la ventana emergente
+        ventanaEmergente.style.display = 'none'; 
     });
 
-    // Manejo del evento submit para editar el vehículo
     formulario.addEventListener('submit', async (e) => {
         e.preventDefault();
         const placa = formulario.dataset.placa;
@@ -112,11 +106,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             Año: formulario['anio'].value,
             Capacidad_Carga: formulario['capacidad'].value,
             Estado: formulario['estado'].value,
-            FechaSoat: new Date(formulario['FechaS'].value)  // Convertir a ISO string
 
         };
 
-        // Verificar si se ha subido un archivo de SOAT
+        const fechaS = formulario['FechaS'].value;
+        if (fechaS) {
+            const fecha = new Date(fechaS);
+            fecha.setDate(fecha.getDate() + 1); // Ajuste para corregir el desfase de un día
+            nuevosDatos.FechaSoat = fecha;
+        } else {
+        console.log("Fecha no modificada, manteniendo valor anterior");
+        }
+
         const fileInput = formulario['Soat'];
         if (fileInput && fileInput.files.length > 0) {
             const file = fileInput.files[0];
@@ -124,9 +125,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             nuevosDatos.SoatURL = downloadURL;
         }
 
-        await editarVehiculo(placa, nuevosDatos); // Actualizar los datos del vehículo
-        ventanaEmergente.style.display = 'none'; // Cerrar la ventana emergente
-        await renderizarVehiculos(); // Recargar los vehículos en la tabla
+        await editarVehiculo(placa, nuevosDatos); 
+        ventanaEmergente.style.display = 'none'; 
+        await renderizarVehiculos(); 
     });
 });
-
