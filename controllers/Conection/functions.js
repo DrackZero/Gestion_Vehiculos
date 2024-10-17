@@ -24,42 +24,41 @@ export const cargarArchivo = async (file, placa, tipoDocumento) => {
 };
 
 export const AgregarVehiculo = (tipo, marca, modelo, año, placa, capacidad, estado, soatURL, fechaSoat, email, revisionTecURL, fechaRevisionTec, 
-    tarjetaOperacionURL, fechaTarjetaOperacion, tarjetaPropiedadURL, fechaTarjetaPropiedad, 
-    ) => {
+  tarjetaOperacionURL, fechaTarjetaOperacion, tarjetaPropiedadURL, fechaTarjetaPropiedad) => {
 
-    const docRef = doc(db, "Vehiculos", placa);
-    console.log("Document Reference:", docRef);
+  const docRef = doc(db, "Vehiculos", placa);
+  console.log("Document Reference:", docRef);
 
-    const vehiculoData = {
-        Tipo: tipo,
-        Marca: marca,
-        Modelo: modelo,
-        Año: año,
-        Placa: placa,
-        Capacidad_Carga: capacidad,
-        Estado: estado,
-        SoatURL: soatURL,
-        FechaSoat: fechaSoat,
-        Email: email,
-        RevisionTecURL: revisionTecURL,
-        FechaRevisionTec: fechaRevisionTec,
-        TarjetaOperacionURL: tarjetaOperacionURL,
-        FechaTarjetaOperacion: fechaTarjetaOperacion,
-        TarjetaPropiedadURL: tarjetaPropiedadURL,
-        FechaTarjetaPropiedad: fechaTarjetaPropiedad,
-        
-    };
+  const vehiculoData = {
+      Tipo: tipo,
+      Marca: marca,
+      Modelo: modelo,
+      Año: año,
+      Placa: placa,
+      Capacidad_Carga: capacidad,
+      Estado: estado,
+      SoatURL: soatURL,
+      FechaSoat: fechaS,
+      Email: email,
+      RevisionTecURL: revisionTecURL,
+      FechaRevisionTec: fechaRevisionTec,
+      TarjetaOperacionURL: tarjetaOperacionURL,
+      FechaTarjetaOperacion: fechaTarjetaOperacion,
+      TarjetaPropiedadURL: tarjetaPropiedadURL,  // Correcto: URL de la tarjeta de propiedad
+      FechaTarjetaPropiedad: fechaTarjetaPropiedad,  // Correcto: Fecha de la tarjeta de propiedad
+  };
 
-    return setDoc(docRef, vehiculoData)
-        .then(() => {
-            console.log("Document successfully written!");
-            return docRef; 
-        })
-        .catch((error) => {
-            console.error("Error writing document: ", error);
-            throw error;
-        });
+  return setDoc(docRef, vehiculoData)
+      .then(() => {
+          console.log("Document successfully written!");
+          return docRef; 
+      })
+      .catch((error) => {
+          console.error("Error writing document: ", error);
+          throw error;
+      });
 };
+
 
 
 
@@ -92,9 +91,17 @@ export const ConsultarVehiculo = async (placa) => {
 };
 
 export const editarVehiculo = async (placa, nuevosDatos) => {
-  const docRef = doc(db, "Vehiculos", placa);
-  await setDoc(docRef, nuevosDatos, { merge: true });
+  try {
+    const docRef = doc(db, "Vehiculos", placa);  // Asegúrate que "placa" corresponde a un ID válido en tu base de datos
+    await setDoc(docRef, nuevosDatos, { merge: true });  // Merge evita sobrescribir campos no incluidos en nuevosDatos
+    console.log('Datos actualizados correctamente');
+  } catch (error) {
+    console.error('Error actualizando el vehículo:', error);
+  }
 };
+
+
+
 
 export const borrarVehiculo = async (placa) => {
   const docRef = doc(db, "Vehiculos", placa);
@@ -118,3 +125,7 @@ export const obtenerDireccionesCorreo = async () => {
     throw error;
   }
 };
+
+
+
+
