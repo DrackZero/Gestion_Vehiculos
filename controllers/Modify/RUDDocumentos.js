@@ -85,24 +85,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     const mostrarFormularioEdicion = (vehiculo) => {
+       
+        formularioEdicionDocumentos['FechaS'].value = vehiculo.FechaSoat ? new Date(vehiculo.FechaSoat)[0] : '';
+        formularioEdicionDocumentos['FechaTO'].value = vehiculo.FechaTarjetaOperacion ? new Date(vehiculo.FechaTarjetaOperacion)[0] : '';
+        formularioEdicionDocumentos['FechaTP'].value = vehiculo.FechaTarjetaPropiedad ? new Date(vehiculo.FechaTarjetaPropiedad)[0] : '';
+        formularioEdicionDocumentos['FechaRT'].value = vehiculo.FechaRevisionTec ? new Date(vehiculo.FechaRevisionTec)[0] : '';
+    
         formularioEdicionDocumentos.onsubmit = async (e) => {
             e.preventDefault();
             const nuevosDatos = {
-                SoatURL: await manejarArchivoSubido(formularioEdicionDocumentos.soat),
-                FechaS: formularioEdicionDocumentos.FechaS.value,
-                TarjetaOperacionURL: await manejarArchivoSubido(formularioEdicionDocumentos.tarjetaOperacion),
-                FechaTO: formularioEdicionDocumentos.FechaT.value,
-                TarjetaPropiedadURL: await manejarArchivoSubido(formularioEdicionDocumentos.tarjetaPropiedad),
-                FechaTP: formularioEdicionDocumentos.FechaTP.value,
-                RevisionTecURL: await manejarArchivoSubido(formularioEdicionDocumentos.revisionTecMec),
-                FechaRT: formularioEdicionDocumentos.FechaRT.value,
+                SoatURL: await manejarArchivoSubido(formularioEdicionDocumentos.soat) || vehiculo.SoatURL,
+                FechaSoat: convertirFecha(formularioEdicionDocumentos.FechaS.value) || vehiculo.FechaSoat,
+                TarjetaOperacionURL: await manejarArchivoSubido(formularioEdicionDocumentos.tarjetaOperacion) || vehiculo.TarjetaOperacionURL,
+                FechaTarjetaOperacion: convertirFecha(formularioEdicionDocumentos.FechaTO.value) || vehiculo.FechaTarjetaOperacion,
+                TarjetaPropiedadURL: await manejarArchivoSubido(formularioEdicionDocumentos.tarjetaPropiedad) || vehiculo.TarjetaPropiedadURL,
+                FechaTarjetaPropiedad: convertirFecha(formularioEdicionDocumentos.FechaTP.value) || vehiculo.FechaTarjetaPropiedad,
+                RevisionTecURL: await manejarArchivoSubido(formularioEdicionDocumentos.revisionTec) || vehiculo.RevisionTecURL,
+                FechaRevisionTec: convertirFecha(formularioEdicionDocumentos.FechaRT.value) || vehiculo.FechaRevisionTec,
             };
+    
             await editarVehiculo(vehiculo.Placa, nuevosDatos);
             ventanaEmergenteDocumentos.style.display = 'none';
             await renderizarDocumentos();
         };
     };
-
+    
     const manejarArchivoSubido = async (inputElement) => {
         if (inputElement.files.length > 0) {
             const file = inputElement.files[0];
@@ -111,10 +118,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         return '';
     };
-
+    
+    const convertirFecha = (fechaStr) => {
+        if (!fechaStr) return '';
+        const fecha = new Date(fechaStr);
+        fecha.setDate(fecha.getDate()+1); // Ajuste para corregir el desfase de un día
+        return fecha;
+    };
+    
     cerrarVentanaBtn.addEventListener('click', () => {
         ventanaEmergenteDocumentos.style.display = 'none';
     });
+    
+    
 });
-
 
