@@ -62,13 +62,10 @@ async function guardarVehiculo(event) {
     }
 }
 
-function mostrarCamposAdicionales() {
-    document.getElementById('commonFields').style.display = 'block';
-}
+
 
 window.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('vehicleForm');
     form.addEventListener('submit', guardarVehiculo);
 
-    mostrarCamposAdicionales();
 });
