@@ -121,10 +121,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     const convertirFecha = (fechaStr) => {
         if (!fechaStr) return '';
-        const fecha = new Date(fechaStr);
-        fecha.setDate(fecha.getDate()+1); // Ajuste para corregir el desfase de un día
-        return fecha;
+
+        const fecha = new Date(fechaStr + 'T00:00:00-05:00');
+        return fecha; 
     };
+    
     
     cerrarVentanaBtn.addEventListener('click', () => {
         ventanaEmergenteDocumentos.style.display = 'none';
@@ -132,4 +133,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     
 });
+
 
