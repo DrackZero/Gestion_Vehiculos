@@ -44,8 +44,8 @@ export const AgregarVehiculo = (tipo, marca, modelo, año, placa, capacidad, est
       FechaRevisionTec: fechaRevisionTec,
       TarjetaOperacionURL: tarjetaOperacionURL,
       FechaTarjetaOperacion: fechaTarjetaOperacion,
-      TarjetaPropiedadURL: tarjetaPropiedadURL,  // Correcto: URL de la tarjeta de propiedad
-      FechaTarjetaPropiedad: fechaTarjetaPropiedad,  // Correcto: Fecha de la tarjeta de propiedad
+      TarjetaPropiedadURL: tarjetaPropiedadURL,  
+      FechaTarjetaPropiedad: fechaTarjetaPropiedad,  
   };
 
   return setDoc(docRef, vehiculoData)
@@ -92,8 +92,8 @@ export const ConsultarVehiculo = async (placa) => {
 
 export const editarVehiculo = async (placa, nuevosDatos) => {
   try {
-    const docRef = doc(db, "Vehiculos", placa);  // Asegúrate que "placa" corresponde a un ID válido en tu base de datos
-    await setDoc(docRef, nuevosDatos, { merge: true });  // Merge evita sobrescribir campos no incluidos en nuevosDatos
+    const docRef = doc(db, "Vehiculos", placa);  
+    await setDoc(docRef, nuevosDatos, { merge: true });  // para evitar sobrescribir campos vacios
     console.log('Datos actualizados correctamente');
   } catch (error) {
     console.error('Error actualizando el vehículo:', error);
