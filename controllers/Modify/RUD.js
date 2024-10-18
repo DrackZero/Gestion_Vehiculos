@@ -111,12 +111,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const fechaS = formulario['FechaS'].value;
         if (fechaS) {
-            const fecha = new Date(fechaS);
-            fecha.setDate(fecha.getDate() + 1); // Ajuste para corregir el desfase de un día
-            nuevosDatos.FechaSoat = fecha;
+            nuevosDatos.FechaSoat = new Date(fechaS + 'T00:00:00-05:00'); 
         } else {
-        console.log("Fecha no modificada, manteniendo valor anterior");
+            console.log("Fecha no modificada, manteniendo valor anterior");
         }
+        
 
         const fileInput = formulario['Soat'];
         if (fileInput && fileInput.files.length > 0) {
