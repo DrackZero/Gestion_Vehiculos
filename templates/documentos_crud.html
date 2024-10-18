@@ -39,6 +39,11 @@
         </div>
     </header>
     <div id="notificationContainer" class="notification-container"></div>
+
+    <div id="loader-container" style="display: none;">
+        <div id="loader"></div>
+    </div>    
+
     <main>
         <div class="lista-vehiculos" id="listaDocumentos">
             <h2>Documentos de Vehículos</h2>
@@ -91,8 +96,8 @@
                             <input type="file" id="revisionTec" class="custom-file-input" name="revisionTec">
                         </div>
                         <div class="form-group">
-                            <label for="FechaRTM">Fecha de vencimiento:</label>
-                            <input type="date" id="FechaRTM" name="FechaRTM" class="form-control">
+                            <label for="FechaRT">Fecha de vencimiento:</label>
+                            <input type="date" id="FechaRT" name="FechaRT" class="form-control">
                         </div>
                         <button type="submit">Guardar Cambios</button>
                     </form>
