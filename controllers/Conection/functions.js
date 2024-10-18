@@ -38,7 +38,7 @@ export const AgregarVehiculo = (tipo, marca, modelo, año, placa, capacidad, est
       Capacidad_Carga: capacidad,
       Estado: estado,
       SoatURL: soatURL,
-      FechaSoat: fechaS,
+      FechaSoat: fechaSoat,
       Email: email,
       RevisionTecURL: revisionTecURL,
       FechaRevisionTec: fechaRevisionTec,
@@ -93,7 +93,7 @@ export const ConsultarVehiculo = async (placa) => {
 export const editarVehiculo = async (placa, nuevosDatos) => {
   try {
     const docRef = doc(db, "Vehiculos", placa);  
-    await setDoc(docRef, nuevosDatos, { merge: true });  // para evitar sobrescribir campos vacios
+    await setDoc(docRef, nuevosDatos, { merge: true });  
     console.log('Datos actualizados correctamente');
   } catch (error) {
     console.error('Error actualizando el vehículo:', error);
@@ -125,6 +125,11 @@ export const obtenerDireccionesCorreo = async () => {
     throw error;
   }
 };
+
+
+
+
+
 
 
 
