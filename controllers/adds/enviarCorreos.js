@@ -44,11 +44,12 @@ export const verificarVencimientosYEnviarCorreos = async () => {
   
         for (const vehiculo of vehiculos) {
             console.log('Revisando vehículo:', vehiculo);
-            const { FechaSoat, FechaRevisionTec, FechaTarjetaOperacion, Email, Placa } = vehiculo;
+            const { FechaSoat, FechaRevisionTec, FechaTarjetaOperacion, FechaTarjetaPropiedad, Email, Placa } = vehiculo;
 
             const fechaSoat = FechaSoat instanceof Date ? FechaSoat : (FechaSoat && FechaSoat.toDate ? FechaSoat.toDate() : new Date(FechaSoat));
             const fechaRevisionTec = FechaRevisionTec instanceof Date ? FechaRevisionTec : (FechaRevisionTec && FechaRevisionTec.toDate ? FechaRevisionTec.toDate() : new Date(FechaRevisionTec));
             const fechaTarjetaOperacion = FechaTarjetaOperacion instanceof Date ? FechaTarjetaOperacion : (FechaTarjetaOperacion && FechaTarjetaOperacion.toDate ? FechaTarjetaOperacion.toDate() : new Date(FechaTarjetaOperacion));
+            const fechaTarjetaPropiedad = FechaTarjetaPropiedad instanceof Date ? FechaTarjetaPropiedad : (FechaTarjetaPropiedad && FechaTarjetaPropiedad.toDate ? FechaTarjetaPropiedad.toDate() : new Date(FechaTarjetaPropiedad));
 
             if (!isNaN(fechaSoat.getTime())) {
                 const diasHastaSoat = Math.ceil((fechaSoat - fechaHoy) / (1000 * 60 * 60 * 24));
@@ -79,6 +80,20 @@ export const verificarVencimientosYEnviarCorreos = async () => {
             } else {
                 console.error(`Fecha Tarjeta de Operación inválida para el vehículo con placa ${Placa}`);
             }
+
+
+
+            if (!isNaN(fechaTarjetaPropiedad.getTime())) {
+                const diasHastaTarjetaPropiedad = Math.ceil((fechaTarjetaPropiedad - fechaHoy) / (1000 * 60 * 60 * 24));
+                if (diasHastaTarjetaPropiedad <= 30 && diasHastaTarjetaPropiedad > 0) {
+                    console.log(`La Tarjeta de Propiedad del vehículo ${Placa} vence en 30 días. Enviando correo...`);
+                    await enviarAdvertenciaCorreo(Email, 'Tarjeta de Propiedad', Placa, fechaTarjetaOperacion, diasHastaTarjetaPropiedad);
+                }
+            } else {
+                console.error(`Fecha Tarjeta de Propiedad inválida para el vehículo con placa ${Placa}`);
+            }
+
+
         }
     } catch (error) {
         console.error('Error verificando vencimientos y enviando correos:', error);
